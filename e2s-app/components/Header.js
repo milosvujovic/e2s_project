@@ -3,8 +3,8 @@ import { createStyles } from '@mantine/core';
 const useStyles = createStyles((theme, _params) => ({
     headerParent:{
         height:"45px",
-        width:"300px",
-        backgroundColor:"blue"
+        width:"100%",
+        backgroundColor:"white"
     }
 }))
 
