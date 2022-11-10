@@ -9,6 +9,8 @@ build:
 
         - echo -e "\nHost deploy\n\tHostName $SSH_HOST\n\tUser $SSH_USER\n\tIdentityFile /home/root/.ssh/deploy.key\n\tStrictHostKeyChecking no" >> /home/root/.ssh/config
 
+        - cat /home/root/.ssh/config
+
         - ssh deploy 'mkdir ThisIsFromGitLab'
         - cd e2s-app
         - npm i
