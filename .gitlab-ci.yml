@@ -2,4 +2,6 @@ image: ubuntu:18.04
 
 build:
     script:
+        - cd e2s-app
+        - npm run build
         - ls
