@@ -20,6 +20,6 @@ build:
 
         - ssh deploy 'rm -rf ~/e2s && mkdir e2s'
 
-        - scp -r ~/e2s-app/.next deploy:/home/ubuntu/e2s
-        - scp ~/e2s-app/.env deploy:/home/ubuntu/e2s
-        - scp ~/e2s-app/package.json deploy:/home/ubuntu/e2s
+        - scp -r ./.next deploy:/home/ubuntu/e2s
+        - scp ./.env deploy:/home/ubuntu/e2s
+        - scp ./package.json deploy:/home/ubuntu/e2s
