@@ -2,6 +2,15 @@ image: node:16
 
 build:
     script:
+        - echo $SSH_KEY >> ~/.ssh/deploy.key
+        - cat >>~/.ssh/config <<END
+          Host deploy
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/deploy.key
+            StrictHostKeyChecking no 
+          END
+        - ssh deploy 'mkdir ThisIsFromGitLab'
         - cd e2s-app
         - npm i
         - npm run build
