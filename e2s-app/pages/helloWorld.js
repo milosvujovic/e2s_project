@@ -1,6 +1,7 @@
 import { createStyles } from '@mantine/core';
 import AppShellConsole from "../components/AppShell";
 import { useState, useEffect } from 'react';
+import useSWR from 'swr';
 
 const useStyles = createStyles((theme, _params) => ({
 	/* Page styling goes here */
@@ -10,19 +11,8 @@ const useStyles = createStyles((theme, _params) => ({
 }))
 
 export default function HelloWorld() {
-	const [data, setData] = useState(null);
-	const [isLoading, setIsLoading] = useState(true);
 	const { classes } = useStyles();
-
-	useEffect(() => {
-		setIsLoading(true);
-		fetch('/api/Apple/test')
-			.then((res) => res.json())
-			.then((data) => {
-				setData(data);
-				setIsLoading(false)
-			})
-	},[])
+	const { data, error } = useSWR('/api/Apple/test')
 
   return (
 	  /* HTML page content goes between AppShellConsole tags */
@@ -30,7 +20,7 @@ export default function HelloWorld() {
 		  <p className={classes.exampleText}>HelloWorld!</p>
 		  <h1>
 			  {
-				  isLoading ?"Loading":data.location
+				  !data ?"Loading":data.location
 			  }
 		  </h1>
 	  </AppShellConsole>
