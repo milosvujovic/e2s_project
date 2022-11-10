@@ -3,5 +3,6 @@ image: node:16
 build:
     script:
         - cd e2s-app
+        - npm i
         - npm run build
         - ls
