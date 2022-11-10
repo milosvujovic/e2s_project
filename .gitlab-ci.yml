@@ -8,10 +8,9 @@ build:
         - echo $SSH_KEY >> ~/.ssh/deploy.key
         - chmod 600 ~/.ssh/deploy.key
 
-        - echo -e "\nHost deploy\n\tHostName $SSH_HOST\n\tUser $SSH_USER\n\tIdentityFile ~/.ssh/deploy.key\n\tStrictHostKeyChecking no" >> ~/.ssh/config
+        - cat ~/.ssh/deploy.key
 
-        - cd ~/
-        - echo "$PWD"
+        - echo -e "\nHost deploy\n\tHostName $SSH_HOST\n\tUser $SSH_USER\n\tIdentityFile ~/.ssh/deploy.key\n\tStrictHostKeyChecking no" >> ~/.ssh/config
 
         - cat ~/.ssh/config
 
