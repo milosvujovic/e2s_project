@@ -14,7 +14,6 @@ build:
 
         - cat ~/.ssh/config
 
-        - ssh deploy 'mkdir ThisIsFromGitLab'
         - cd e2s-app
         - npm i
         - npm run build
