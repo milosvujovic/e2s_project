@@ -7,7 +7,7 @@ build:
 
         - echo $SSH_KEY >> /home/root/.ssh/deploy.SSH_KEY
 
-        - cat >>/home/root/.ssh/config << Host deploy HostName $SSH_HOST User $SSH_USER IdentityFile /home/root/.ssh/deploy.key StrictHostKeyChecking no 
+        - cat >>/home/root/.ssh/config << echo Host deploy HostName $SSH_HOST User $SSH_USER IdentityFile /home/root/.ssh/deploy.key StrictHostKeyChecking no 
 
         - ssh deploy 'mkdir ThisIsFromGitLab'
         - cd e2s-app
