@@ -5,8 +5,9 @@ build:
         - mkdir -p /home/root/.ssh
         - chmod 700 /home/root/.ssh
 
-        - echo $SSH_KEY >> /home/root/.ssh/deploy.key
-        - cat >>~/.ssh/config <<END
+        - echo $SSH_KEY >> /home/root/.ssh/deploy.SSH_KEY
+
+        - cat >>/home/root/.ssh/config <<END
           Host deploy
             HostName $SSH_HOST
             User $SSH_USER
