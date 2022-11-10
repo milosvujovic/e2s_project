@@ -1,6 +1,5 @@
 import { createStyles } from '@mantine/core';
 import AppShellConsole from "../components/AppShell";
-import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 
 const useStyles = createStyles((theme, _params) => ({
