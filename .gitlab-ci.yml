@@ -22,3 +22,5 @@ build:
 
         - scp -r ./.next deploy:/home/ubuntu/e2s
         - scp ./package.json deploy:/home/ubuntu/e2s
+
+        - ssh deploy 'cd ~/e2s; pkill node; pkill screen; npm i; screen -d -p npm run start'
