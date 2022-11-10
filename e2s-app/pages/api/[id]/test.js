@@ -6,9 +6,9 @@ export default async function (req, res) {
     if (req.method === 'GET') {
         // Allow a blog post to get its number of likes and views
         const params = {
-            TableName: 'Users',
+            TableName: 'Test',
             Key: {
-                userId: id
+                name: id
             }
         };
 
