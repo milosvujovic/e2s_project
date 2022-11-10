@@ -6,8 +6,11 @@ build:
         - chmod 700 ~/.ssh
 
         - echo $SSH_KEY >> ~/.ssh/deploy.key
+        - chmod 600 ~/.ssh/deploy.key
 
-        - echo -e "\nHost deploy\n\tHostName $SSH_HOST\n\tUser $SSH_USER\n\tIdentityFile /home/ubuntu/.ssh/deploy.key\n\tStrictHostKeyChecking no" >> ~/.ssh/config
+        - echo -e "\nHost deploy\n\tHostName $SSH_HOST\n\tUser $SSH_USER\n\tIdentityFile ~/.ssh/deploy.key\n\tStrictHostKeyChecking no" >> ~/.ssh/config
+
+        - echo "$PWD"
 
         - cat ~/.ssh/config
 
