@@ -2,14 +2,14 @@ image: node:16
 
 build:
     script:
-        - mkdir -p /home/root/.ssh
-        - chmod 700 /home/root/.ssh
+        - mkdir -p ~/.ssh
+        - chmod 700 ~/.ssh
 
-        - echo $SSH_KEY >> /home/root/.ssh/deploy.SSH_KEY
+        - echo $SSH_KEY >> ~/.ssh/deploy.key
 
-        - echo -e "\nHost deploy\n\tHostName $SSH_HOST\n\tUser $SSH_USER\n\tIdentityFile /home/root/.ssh/deploy.key\n\tStrictHostKeyChecking no" >> /home/root/.ssh/config
+        - echo -e "\nHost deploy\n\tHostName $SSH_HOST\n\tUser $SSH_USER\n\tIdentityFile /home/ubuntu/.ssh/deploy.key\n\tStrictHostKeyChecking no" >> ~/.ssh/config
 
-        - cat /home/root/.ssh/config
+        - cat ~/.ssh/config
 
         - ssh deploy 'mkdir ThisIsFromGitLab'
         - cd e2s-app
