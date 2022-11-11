@@ -1,26 +1,44 @@
 image: node:16
 
-build:
+Prod Deploy:
+    only:
+        - main
     script:
         - mkdir -p ~/.ssh
         - chmod 700 ~/.ssh
 
-        - echo -e "-----BEGIN OPENSSH PRIVATE KEY-----\n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\n-----END OPENSSH PRIVATE KEY-----" >> ~/.ssh/deploy.key
+        - echo -e "$SSH_KEY" >> ~/.ssh/deploy.key
         - chmod 600 ~/.ssh/deploy.key
-
-        - cat ~/.ssh/deploy.key
-
-        - echo -e "\nHost deploy\n\tHostName $SSH_HOST\n\tUser $SSH_USER\n\tIdentityFile ~/.ssh/deploy.key\n\tStrictHostKeyChecking no" >> ~/.ssh/config
-
-        - cat ~/.ssh/config
+        - echo -e "\nHost deploy\n\tHostName $SSH_HOST\n\tUser $SSH_USER\n\tIdentityFile ~/.ssh/deploy.key\n\tStrictHostKeyChecking no " >> ~/.ssh/config
 
         - cd e2s-app
         - npm i
         - npm run build
 
-        - ssh deploy 'rm -rf ~/e2s/.next; rm -f ~/e2s/package.json'
+        - ssh deploy 'rm -rf ~/e2s_prod/.next; rm -f ~/e2s_prod/package.json'
+        - scp -r ./.next deploy:/home/ubuntu/e2s_prod
+        - scp ./package.json deploy:/home/ubuntu/e2s_prod
 
-        - scp -r ./.next deploy:/home/ubuntu/e2s
-        - scp ./package.json deploy:/home/ubuntu/e2s
+        - ssh deploy 'cd ~/e2s_prod; screen -S e2s_prod -X quit; npm i; screen -dmS e2s_prod npm run start'
 
-        - ssh deploy 'cd ~/e2s; pkill node; pkill screen; npm i; screen -d -m npm run start'
+
+Dev Deploy:
+    only:
+        - dev
+    script:
+        - mkdir -p ~/.ssh
+        - chmod 700 ~/.ssh
+
+        - echo -e "$SSH_KEY" >> ~/.ssh/deploy.key
+        - chmod 600 ~/.ssh/deploy.key
+        - echo -e "\nHost deploy\n\tHostName $SSH_HOST\n\tUser $SSH_USER\n\tIdentityFile ~/.ssh/deploy.key\n\tStrictHostKeyChecking no " >> ~/.ssh/config
+
+        - cd e2s-app
+        - npm i
+        - npm run build
+
+        - ssh deploy 'rm -rf ~/e2s_dev/.next; rm -f ~/e2s_dev/package.json'
+        - scp -r ./.next deploy:/home/ubuntu/e2s_dev
+        - scp ./package.json deploy:/home/ubuntu/e2s_dev
+
+        - ssh deploy 'cd ~/e2s_dev; screen -S e2s_dev -X quit; npm i; screen -dmS e2s_dev npm run start -- --port 3001'
