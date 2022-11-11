@@ -1,13 +1,13 @@
 image: node:16
 
-configure_ssh:
+build:
     script:
         - mkdir -p ~/.ssh
         - chmod 700 ~/.ssh
 
         - echo -e "$SSH_KEY" >> ~/.ssh/deploy.key
         - chmod 600 ~/.ssh/deploy.key
-        - echo -e "\nHost deploy\n\tHostName $SSH_HOST\n\tUser $SSH_USER\n\tIdentityFile ~/.ssh/deploy.key" >> ~/.ssh/config
+        - echo -e "\nHost deploy\n\tHostName $SSH_HOST\n\tUser $SSH_USER\n\tIdentityFile ~/.ssh/deploy.key\n\tStrictHostKeyChecking no " >> ~/.ssh/config
 
         - cd e2s-app
         - npm i
