@@ -18,6 +18,8 @@ Prod Deploy:
         - ssh deploy 'rm -rf ~/e2s_prod/.next; rm -f ~/e2s_prod/package.json'
         - scp -r ./.next deploy:/home/ubuntu/e2s_prod
         - scp ./package.json deploy:/home/ubuntu/e2s_prod
+        - scp ./next.config.js deploy:/home/ubuntu/e2s_dev
+        - scp ./next-i18next.config.js deploy:/home/ubuntu/e2s_dev
 
         - ssh deploy 'cd ~/e2s_prod; screen -S e2s_prod -X quit; npm i; screen -dmS e2s_prod npm run start'
 
@@ -40,5 +42,7 @@ Dev Deploy:
         - ssh deploy 'rm -rf ~/e2s_dev/.next; rm -f ~/e2s_dev/package.json'
         - scp -r ./.next deploy:/home/ubuntu/e2s_dev
         - scp ./package.json deploy:/home/ubuntu/e2s_dev
+        - scp ./next.config.js deploy:/home/ubuntu/e2s_dev
+        - scp ./next-i18next.config.js deploy:/home/ubuntu/e2s_dev
 
         - ssh deploy 'cd ~/e2s_dev; screen -S e2s_dev -X quit; npm i; screen -dmS e2s_dev npm run start -- --port 3001'
