@@ -19,7 +19,7 @@ export default function Infrastructure() {
 	  /* HTML page content goes between AppShellConsole tags */
 	  <AppShellConsole title={"Infrastructure"}>
 	  	<TimeRangeSelector setEndTimestamp={setEndTimestamp} setStartTimestamp={setStartTimestamp}/>
-			<TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp} variant="unstyled"/>
+			<TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
 	  </AppShellConsole>
   );
 }
