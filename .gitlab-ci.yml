@@ -12,7 +12,7 @@ Prod Deploy:
         - echo -e "\nHost deploy\n\tHostName $SSH_HOST\n\tUser $SSH_USER\n\tIdentityFile ~/.ssh/deploy.key\n\tStrictHostKeyChecking no " >> ~/.ssh/config
 
         - cd e2s-app
-        - npm i
+        - npm i --legacy-peer-deps
         - npm run build
 
         - ssh deploy 'rm -rf ~/e2s_prod/.next; rm -f ~/e2s_prod/package.json'
@@ -21,7 +21,7 @@ Prod Deploy:
         - scp ./next.config.js deploy:/home/ubuntu/e2s_dev
         - scp ./next-i18next.config.js deploy:/home/ubuntu/e2s_dev
 
-        - ssh deploy 'cd ~/e2s_prod; screen -S e2s_prod -X quit; npm i; screen -dmS e2s_prod npm run start'
+        - ssh deploy 'cd ~/e2s_prod; screen -S e2s_prod -X quit; npm i --legacy-peer-deps; screen -dmS e2s_prod npm run start'
 
 
 Dev Deploy:
@@ -36,7 +36,7 @@ Dev Deploy:
         - echo -e "\nHost deploy\n\tHostName $SSH_HOST\n\tUser $SSH_USER\n\tIdentityFile ~/.ssh/deploy.key\n\tStrictHostKeyChecking no " >> ~/.ssh/config
 
         - cd e2s-app
-        - npm i
+        - npm i --legacy-peer-deps
         - npm run build
 
         - ssh deploy 'rm -rf ~/e2s_dev/.next; rm -f ~/e2s_dev/package.json'
@@ -45,4 +45,4 @@ Dev Deploy:
         - scp ./next.config.js deploy:/home/ubuntu/e2s_dev
         - scp ./next-i18next.config.js deploy:/home/ubuntu/e2s_dev
 
-        - ssh deploy 'cd ~/e2s_dev; screen -S e2s_dev -X quit; npm i; screen -dmS e2s_dev npm run start -- --port 3001'
+        - ssh deploy 'cd ~/e2s_dev; screen -S e2s_dev -X quit; npm i --legacy-peer-deps; screen -dmS e2s_dev npm run start -- --port 3001'
