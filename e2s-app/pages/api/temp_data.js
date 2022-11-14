@@ -35,7 +35,6 @@ export default async function (req, res) {
             res.status(500).end()
         } else {
             // send the json response from the callback
-            console.log(data)
             res.status(200).json(data.Items);
         }
     });

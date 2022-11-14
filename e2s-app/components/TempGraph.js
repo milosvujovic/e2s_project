@@ -1,4 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import { createStyles, Text, Loader } from '@mantine/core';
+import ReactECharts from 'echarts-for-react';
+import useSWR from 'swr';
+
+
+const useStyles = createStyles((theme, _params) => ({
+	tmpContainer:{
+		border:"1px solid blue",
+		background:"white",
+		width:"400px"
+	},
+	graphContainer:{
+		width:"100%",
+		height:"230px",
+		display:"flex",
+		alignItems:"center",
+		justifyContent:"center",
+		position:"relative"
+	}
+}))
 
 function TempGraph({startTimestamp=null, endTimestamp=null}){
 	//If either is null then return error
@@ -7,12 +27,62 @@ function TempGraph({startTimestamp=null, endTimestamp=null}){
 		return <p>Timestamps not set</p>
 	}
 
-	let [data, setData] = useState(null);
+	const { data, error } = useSWR(`/api/temp_data?startTimestamp=${startTimestamp}&endTimestamp=${endTimestamp}`)
+
+	const { classes } = useStyles();
+
+	function getOptions(){
+
+		if(!data){
+			return
+		}
+
+		console.log(data[0])
+		const labels = data.map((row)=>{
+			const date = new Date(row.timestamp * 1000)
+			return date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + ('0' + date.getMinutes()).slice(-2)
+		})
+		const values = data.map((row)=>row.value)
+
+		const option = {
+		  tooltip: {
+		    trigger: 'axis',
+		  },
+		  xAxis: {
+		    type: 'category',
+		    boundaryGap: false,
+		    data: labels
+		  },
+		  yAxis: {
+		    type: 'value',
+		    axisLabel: {
+		      formatter: '{value} °C'
+		    }
+		  },
+		  series: [
+		    {
+		      name: 'Temperature',
+		      type: 'line',
+		      data: values,
+		      showSymbol:false,
+		    },
+		  ]
+		};
+		return option
+	}
 
 	return(
-		<>
-			<p>temp graph</p>
-		</>
+		// This container will change when Will pushes his standard components
+		<div className={classes.tmpContainer}>
+			<Text>temp graph</Text>
+			<div className={classes.graphContainer}>
+				{
+					!data?
+					<Loader />:
+					<ReactECharts option={getOptions()} style={{height: '300px', width:"100%", position:"absolute", left:10}}/>
+				}
+			</div>
+		</div>
 	)
 }
 
