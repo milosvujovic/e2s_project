@@ -37,7 +37,6 @@ function TempGraph({startTimestamp=null, endTimestamp=null}){
 			return
 		}
 
-		console.log(data[0])
 		const labels = data.map((row)=>{
 			const date = new Date(row.timestamp * 1000)
 			return date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + ('0' + date.getMinutes()).slice(-2)
@@ -74,7 +73,7 @@ function TempGraph({startTimestamp=null, endTimestamp=null}){
 	return(
 		// This container will change when Will pushes his standard components
 		<div className={classes.tmpContainer}>
-			<Text>temp graph</Text>
+			<Text>Temperature</Text>
 			<div className={classes.graphContainer}>
 				{
 					!data?
