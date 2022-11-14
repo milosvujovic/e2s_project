@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import '../styles/datePicker.css'
 import type { AppProps } from 'next/app'
 import { MantineProvider } from '@mantine/core';
 import useSWR, { SWRConfig } from 'swr';

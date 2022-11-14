@@ -21,15 +21,14 @@ const useStyles = createStyles((theme, _params) => ({
 }))
 
 function TempGraph({startTimestamp=null, endTimestamp=null}){
+	const { data, error } = useSWR(`/api/temp_data?startTimestamp=${startTimestamp}&endTimestamp=${endTimestamp}`)
+	const { classes } = useStyles();
+	
 	//If either is null then return error
 	if(startTimestamp == null || endTimestamp == null){
 		console.warn("Timestamps Not Set")
 		return <p>Timestamps not set</p>
 	}
-
-	const { data, error } = useSWR(`/api/temp_data?startTimestamp=${startTimestamp}&endTimestamp=${endTimestamp}`)
-
-	const { classes } = useStyles();
 
 	function getOptions(){
 
