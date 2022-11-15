@@ -12,8 +12,8 @@ export default async function (req, res) {
 
     const body = req.body;
 
-    if(body.email == null || body.password == null){
-        res.status(400).end("email and password must be provided in the json body")
+    if(body.email == null || body.password == null || body.email === '' || body.password === ''){
+        res.status(400).end("Email and password must be provided")
     }
 
     const params = {
