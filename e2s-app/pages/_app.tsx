@@ -1,9 +1,11 @@
 import '../styles/globals.css'
+import '../styles/datePicker.css'
 import type { AppProps } from 'next/app'
 import { MantineProvider } from '@mantine/core';
 import useSWR, { SWRConfig } from 'swr';
+import { appWithTranslation } from 'next-i18next';
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
     return (
         <SWRConfig 
           value={{
@@ -24,3 +26,6 @@ export default function App({ Component, pageProps }: AppProps) {
         </SWRConfig>
     )
 }
+
+
+export default appWithTranslation(App);
