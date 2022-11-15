@@ -32,3 +32,26 @@ html, body, #__next{
     background: black;
   }
 }
+
+.nav-logo{
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.nav-element{
+  color: #A6A6A6;
+  font-family: Arial, Regular;
+  text-align: left;
+  margin: 3.5ex;
+  cursor: pointer;
+}
+
+.nav-settings{
+  color: #A6A6A6;
+  font-family: Arial, Regular;
+  text-align: left;
+  margin-top: 9ex;
+  margin-left: 4ex;
+  cursor: pointer;
+}

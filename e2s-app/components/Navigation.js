@@ -18,34 +18,34 @@ export function Navigation() {
             {/*<div className={classes.navigationParent}/>*/}
 
             <div  className={classes.navigationParent}>
-                <h1>
+                <h1 className="nav-logo">
                     Logo
                 </h1>
                 <div>
                     <div>
                         <div>
-                            <h3>
+                            <h3 className="nav-element" >
                                 <Link href="/dashboard">
                                 Dashboard
                                 </Link>
                             </h3>
                         </div>
                         <div>
-                            <h3>
+                            <h3 className="nav-element">
                                 <Link href="/usage">
                                     Usage
                                 </Link>
                             </h3>
                         </div>
                         <div>
-                            <h3>
+                            <h3 className="nav-element">
                                 <Link href="/infrastructure">
                                     Infrastructure
                                 </Link>
                             </h3>
                         </div>
                         <div>
-                            <h3>
+                            <h3 className="nav-element">
                                 <Link href="/reporting">
                                     Reporting
                                 </Link>
@@ -56,7 +56,7 @@ export function Navigation() {
                     {/* setting  */}
                     <div>
                         <div>
-                            <h3>
+                            <h3 className="nav-settings">
                                 <Link href="/settings">
                                     Settings
                                 </Link>
