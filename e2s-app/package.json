@@ -20,15 +20,13 @@
     "@types/react": "18.0.24",
     "@types/react-dom": "18.0.8",
     "aws-sdk": "^2.1251.0",
-<<<<<<< Updated upstream
+    "bcrypt": "^5.1.0",
     "dayjs": "^1.11.6",
     "echarts": "^5.4.0",
     "echarts-for-react": "^3.0.2",
-=======
-    "bootstrap": "^5.2.2",
->>>>>>> Stashed changes
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.1",
+    "jsonwebtoken": "^8.5.1",
     "next": "^13.0.1",
     "next-i18next": "^12.1.0",
     "react": "18.2.0",
