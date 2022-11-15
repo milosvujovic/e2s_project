@@ -23,7 +23,7 @@ const useStyles = createStyles((theme, _params) => ({
 
 export default function Login() {
     const { classes } = useStyles();
-    const router = useRouter()
+    const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loginError, setLoginError] = useState('');
