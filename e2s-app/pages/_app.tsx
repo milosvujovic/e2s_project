@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import { MantineProvider } from '@mantine/core';
 import useSWR, { SWRConfig } from 'swr';
 
+
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <SWRConfig 

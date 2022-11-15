@@ -1,5 +1,11 @@
 import { createStyles } from '@mantine/core';
 import Link from 'next/Link';
+// import the library
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
+// import your icons
+import { faCode, faHighlighter } from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = createStyles((theme, _params) => ({
     navigationParent:{
@@ -25,6 +31,7 @@ export function Navigation() {
                     <div>
                         <div>
                             <h3 className="nav-element" >
+                                <FontAwesomeIcon icon={faCode} />
                                 <Link href="/dashboard">
                                 Dashboard
                                 </Link>
@@ -34,6 +41,13 @@ export function Navigation() {
                             <h3 className="nav-element">
                                 <Link href="/usage">
                                     Usage
+                                </Link>
+                            </h3>
+                        </div>
+                        <div>
+                            <h3 className="nav-element">
+                                <Link href="/emissions">
+                                    CO₂
                                 </Link>
                             </h3>
                         </div>
