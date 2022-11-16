@@ -2,8 +2,8 @@ import { createStyles } from '@mantine/core';
 import Link from 'next/Link';
 import Image from 'next/image'
 import Logo from '../public/Logo_v1_EES.jpg'
+import {useRouter} from "next/router";
 // import the library
-import { library } from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 // import your icons
@@ -24,59 +24,68 @@ const useStyles = createStyles((theme, _params) => ({
 
 export function Navigation() {
     const { classes } = useStyles();
+    const router = useRouter();
 
     return (
         <>
-            {/*<h1>Logo</h1>*/}
-            {/*<div className={classes.navigationParent}/>*/}
-
             <div  className={classes.navigationParent}>
-                {/*<h1 className="nav-logo">*/}
-                {/*    Logo*/}
-                {/*</h1>*/}
                 <Image className="nav-logo" src={Logo} alt={'/'}/>
                 <div className="nav-element">
                 <ul>
-                    <li>
-                        <Link href="/dashboard"><h3>
+                    <li className={router.pathname == "/dashboard" ? "activeTab" : ""}>
+                        <Link href={"/dashboard"} className="element">
+                            <h3>
                             <FontAwesomeIcon icon={faHome} className="icon"/>
-                            Dashboard</h3>
+                            Dashboard
+                            </h3>
                         </Link>
                     </li>
-                    <li>
-                        <Link href="/usage"><h3>
-                            <FontAwesomeIcon icon={faLightbulb} className="icon"/>
-                             Usage</h3>
+                    <li className={router.pathname == "/usage" ? "activeTab" : ""}>
+                        <Link href="/usage" className="element">
+                            <h3>
+                                <FontAwesomeIcon icon={faLightbulb} className="icon"/>
+                                Usage
+                            </h3>
                         </Link>
                     </li>
-                    <li>
-                        <Link href="/emissions"><h3>
+                    <li className={router.pathname == "/emissions" ? "activeTab" : ""}>
+                        <Link href="/emissions" className="element">
+                            <h3>
                             <FontAwesomeIcon icon={faLeaf} className="icon"/>
-                            CO₂</h3>
+                            CO₂
+                        </h3>
                         </Link>
                     </li>
-                    <li>
-                        <Link href="/infrastructure"><h3>
+                    <li className={router.pathname == "/infrastructure" ? "activeTab" : ""}>
+                        <Link href="/infrastructure" className="element">
+                            <h3>
                             <FontAwesomeIcon icon={faTreeCity} className="icon"/>
-                            Infrastructure</h3>
+                            Infrastructure
+                            </h3>
                         </Link>
                     </li>
-                    <li>
-                        <Link href="/reporting"><h3>
+                    <li className={router.pathname == "/reporting" ? "activeTab" : ""}>
+                        <Link href="/reporting" className="element">
+                            <h3>
                             <FontAwesomeIcon icon={faBook} className="icon"/>
-                            Reporting</h3>
+                            Reporting
+                            </h3>
                         </Link>
                     </li>
 
                 {/* setting  */}
+                    <div className={router.pathname == "/settings" ? "activeTab" : ""}>
                     <li className="nav-settings">
                         <div className="nav-element">
-                        <Link href="/settings"><h3>
-                        <FontAwesomeIcon icon={faSliders} className="icon"/>
-                            Settings</h3>
+                        <Link href="/settings" className="element">
+                            <h3>
+                            <FontAwesomeIcon icon={faSliders} className="icon"/>
+                            Settings
+                            </h3>
                         </Link>
                         </div>
                     </li>
+                    </div>
                 </ul>
                 </div>
             </div>
