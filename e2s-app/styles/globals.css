@@ -13,6 +13,10 @@ a {
 
 * {
   box-sizing: border-box;
+  padding:0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
 }
 
 #__next{
@@ -51,7 +55,7 @@ html, body, #__next{
   text-decoration: none;
   line-height: 5ex;
   display: block;
-  margin-left: -4ex;
+  margin-left: 1.5ex;
 }
 
 .nav-element ul li :hover{
@@ -69,16 +73,34 @@ html, body, #__next{
 .icon{
   padding-right: 1.5ex;
 }
-.topnavbar{
-  padding: 0.7ex;
+
+.nav-header{
+  padding: 1ex 5ex 1%;
+  border-bottom: 3px solid;
 }
+
+.head{
+  padding: 0 50px;
+  font-size: 17px;
+}
+
+.second-half{
+  float: right;
+}
+
+.second-half li{
+  margin: 0 4ex;
+  font-weight: 600;
+  float:right;
+}
+
 .nav-button{
   margin-left: 4ex;
-  /*margin-right: 119ex;*/
-  text-align: left;
+  border-style: none;
+  cursor: pointer;
 }
 .logout{
-  padding: 3ex;
-  text-align: right;
+  padding: 3.5ex;
+  text-align: center;
   color: blue;
 }

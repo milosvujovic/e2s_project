@@ -11,20 +11,24 @@ const useStyles = createStyles((theme, _params) => ({
 
 export function Header() {
     const { classes } = useStyles();
-
     return (
         <>
 
-            <div className={classes.headerParent}>
-                <nav className="topnavbar">
-                Connected
-                <button className="nav-button">+ Add Manual reading</button>
-                Hello, id. Not you?
-                    <Link className="logout" href="/">
+            <nav className= "nav-header">
+
+                <div className="head">
+                    Connected
+                    <button className="nav-button">+ Add Manual reading</button>
+
+
+                <ul className="second-half">
+                    <li><Link className="logout" href="/">
                         Logout
-                    </Link>
-                </nav>
-            </div>
+                    </Link></li>
+                    <li>Hello, id. Not you?</li>
+                </ul>
+                </div>
+            </nav>
 
         </>
     );
