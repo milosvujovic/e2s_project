@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createStyles } from '@mantine/core';
 import AppShellConsole from "../components/AppShell";
 import TempGraph from "../components/TempGraph";
+import ContractorDirectory from "../components/ContractorDirectory";
 import TimeRangeSelector from "../components/TimeRangeSelector";
 
 const useStyles = createStyles((theme, _params) => ({
@@ -20,6 +21,7 @@ export default function Infrastructure() {
 	  <AppShellConsole title={"Infrastructure"}>
 	  	<TimeRangeSelector setEndTimestamp={setEndTimestamp} setStartTimestamp={setStartTimestamp}/>
 			<TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
+			<ContractorDirectory />
 	  </AppShellConsole>
   );
 }
