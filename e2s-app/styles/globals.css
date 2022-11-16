@@ -34,24 +34,51 @@ html, body, #__next{
 }
 
 .nav-logo{
-  color: white;
-  text-align: center;
   cursor: pointer;
+  width: 50%;
+  height: 14ex;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.nav-element{
+.nav-element ul li{
   color: #A6A6A6;
   font-family: Arial, Regular;
   text-align: left;
-  margin: 3.5ex;
   cursor: pointer;
+  list-style: none;
+  text-decoration: none;
+  line-height: 5ex;
+  display: block;
+  margin-left: -4ex;
+}
+
+.nav-element ul li :hover{
+  background-color: darkgrey;
+  color: white;
 }
 
 .nav-settings{
   color: #A6A6A6;
   font-family: Arial, Regular;
   text-align: left;
-  margin-top: 9ex;
-  margin-left: 4ex;
+  margin-top: 6.3ex;
   cursor: pointer;
+}
+.icon{
+  padding-right: 1.5ex;
+}
+.topnavbar{
+  padding: 0.7ex;
+}
+.nav-button{
+  margin-left: 4ex;
+  /*margin-right: 119ex;*/
+  text-align: left;
+}
+.logout{
+  padding: 3ex;
+  text-align: right;
+  color: blue;
 }
