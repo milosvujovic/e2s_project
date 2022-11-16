@@ -1,11 +1,10 @@
 import { createStyles } from '@mantine/core';
 import AppShellConsole from "../components/AppShell";
+import {Container} from "../components/Container";
 
 const useStyles = createStyles((theme, _params) => ({
 	/* Page styling goes here */
-	button:{
-		border:"1px solid blue"
-	}
+
 }))
 
 export default function Dashboard() {
@@ -14,7 +13,10 @@ export default function Dashboard() {
   return (
 	  /* HTML page content goes between AppShellConsole tags */
 	  <AppShellConsole title={"Dashboard"}>
-
+		<h1>Dashboard</h1>
+		  <Container>
+			  <h3>Inside container</h3>
+		  </Container>
 	  </AppShellConsole>
   );
 }
