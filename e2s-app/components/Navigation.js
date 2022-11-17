@@ -19,6 +19,10 @@ const useStyles = createStyles((theme, _params) => ({
         height:"100vh",
         width:"240px",
         backgroundColor:"#363740"
+    },
+    logoPlaceholder:{
+        height: "120px",
+        width: "100%"
     }
 }))
 
@@ -29,7 +33,11 @@ export function Navigation() {
     return (
         <>
             <div  className={classes.navigationParent}>
-                <Image className="nav-logo" src={Logo} alt={'/'}/>
+
+                <div className={classes.logoPlaceholder}>
+
+                </div>
+
                 <div className="nav-element">
                 <ul>
                     <li className={router.pathname == "/dashboard" ? "activeTab" : ""}>
