@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { createStyles, Group, Text, Table, Anchor, Modal, Accordion, Loader } from '@mantine/core';
+import { createStyles, Group, Text, Table, Anchor, Modal, Accordion, Loader, Image } from '@mantine/core';
 import useSWR from 'swr';
+import { FileDownload } from 'tabler-icons-react';
 
 
 const useStyles = createStyles((theme, _params) => ({
@@ -53,31 +54,34 @@ function ContractorDirectory(){
 			<Modal
 	        opened={contractorModalOpened}
 	        onClose={() => setContractorModalOpened(false)}
-	        title={!selectedContactor?"No contractor selected":selectedContactor.name}
 	        exitTransitionDuration="125"
 	        size="600px"
+	        withCloseButton={false}
 	      >
 	        {
-	        	!selectedContactor?
-	        	<Text>No contractor selected</Text>:
+	        	!selectedContactor ? <Text>No contractor selected</Text> :
 
 	        	<Group>
+	        		<Image src={"data:image/"+selectedContactor.logoB64} width="100px"/>
 	        		<Text size="sm">Description: {selectedContactor.description}<br />
 	        		Email Address: <Anchor href={"mailto:" + selectedContactor.email}>{selectedContactor.email}</Anchor><br />
 	        		Phone Number: {selectedContactor.phone}</Text>
 	        		{
-	        			!selectedContactor.manuals?
-								<Accordion chevronPosition="left" defaultValue="customization" style={{ width: '100%' }}>
+	        			!selectedContactor.manuals ?
+								<Accordion chevronPosition="right" chevron={<i></i>} variant="contained" defaultValue="customization" style={{ width: '100%' }}>
 						      <Accordion.Item value="downloads">
-						        <Accordion.Control disabled>No downloads available</Accordion.Control>
-
+						        <Accordion.Control icon={<FileDownload size={20} color="#666"/>} disabled>No downloads available</Accordion.Control>
 						      </Accordion.Item>
 					      </Accordion>
 	        			:
-		        		<Accordion chevronPosition="left" defaultValue="customization" style={{ width: '100%' }}>
+		        		<Accordion chevronPosition="right" defaultValue="customization"  variant="contained" style={{ width: '100%' }}>
 						      <Accordion.Item value="downloads">
-						        <Accordion.Control>{selectedContactor.manuals.length} download{(!selectedContactor.manuals.length == 1)?"":"s"} available</Accordion.Control>
-						        <Accordion.Panel><Loader /></Accordion.Panel>
+						        <Accordion.Control icon={<FileDownload size={20} color="#666"/>}>{selectedContactor.manuals.length} download{(!selectedContactor.manuals.length == 1)?"":"s"} available</Accordion.Control>
+						        <Accordion.Panel>
+						        	<Group style={{ width: '100%', paddingTop: '16px' }}>
+						        		<Loader style={{ width: '100%' }}/>
+						        	</Group>
+						        </Accordion.Panel>
 						      </Accordion.Item>
 					      </Accordion>
 				      }
