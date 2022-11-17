@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createStyles, Group, Text, Table, Anchor, Modal } from '@mantine/core';
+import { createStyles, Group, Text, Table, Anchor, Modal, Accordion, Loader } from '@mantine/core';
 import useSWR from 'swr';
 
 
@@ -60,10 +60,27 @@ function ContractorDirectory(){
 	        {
 	        	!selectedContactor?
 	        	<Text>No contractor selected</Text>:
+
 	        	<Group>
 	        		<Text size="sm">Description: {selectedContactor.description}<br />
 	        		Email Address: <Anchor href={"mailto:" + selectedContactor.email}>{selectedContactor.email}</Anchor><br />
 	        		Phone Number: {selectedContactor.phone}</Text>
+	        		{
+	        			!selectedContactor.manuals?
+								<Accordion chevronPosition="left" defaultValue="customization" style={{ width: '100%' }}>
+						      <Accordion.Item value="downloads">
+						        <Accordion.Control disabled>No downloads available</Accordion.Control>
+
+						      </Accordion.Item>
+					      </Accordion>
+	        			:
+		        		<Accordion chevronPosition="left" defaultValue="customization" style={{ width: '100%' }}>
+						      <Accordion.Item value="downloads">
+						        <Accordion.Control>{selectedContactor.manuals.length} download{(!selectedContactor.manuals.length == 1)?"":"s"} available</Accordion.Control>
+						        <Accordion.Panel><Loader /></Accordion.Panel>
+						      </Accordion.Item>
+					      </Accordion>
+				      }
 						</Group>
 	        }
       </Modal>
@@ -84,6 +101,7 @@ function ContractorDirectory(){
 		      </thead>
 		      <tbody>{rows}</tbody>
 		    </Table>
+
 			</div>
 
     </Group>
