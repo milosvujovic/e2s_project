@@ -29,7 +29,7 @@ export default function HelloWorld() {
   return (
 	  /* HTML page content goes between AppShellConsole tags */
 	  <AppShellConsole title={"HelloWorld"}>
-		  <p className={classes.exampleText}>{t('title')}</p>
+		  <p className={classes.exampleText} aria-testlabel={'helloWorldTitle'}>{t('title')}</p>
 		  <h1>
 			  {
 				  !data ?"Loading":data.message
