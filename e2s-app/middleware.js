@@ -10,7 +10,6 @@ export async function middleware(req) {
         "/usage",
         "/helloWorld"
     ]
-    console.log(req.cookies.get("token"))
     const cookie = req.cookies.get("token")
     let protected_url = false
     for (let url of protectedUrls) {
