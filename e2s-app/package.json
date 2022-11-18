@@ -23,6 +23,7 @@
     "@types/react": "18.0.24",
     "@types/react-dom": "18.0.8",
     "aws-sdk": "^2.1251.0",
+    "clsx": "^1.2.1",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.1",
     "next": "^13.0.1",

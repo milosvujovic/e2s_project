@@ -17,6 +17,7 @@ function AppShellConsole({children, title}) {
     return (
         <>
             <Head>
+                <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.1/css/sharp-solid.css"></link>
                 <title>
                     {title}
                 </title>
@@ -32,6 +33,7 @@ function AppShellConsole({children, title}) {
                     <div className={classes.pageLeftSide}>
                         {<Header/>}
                         {children}
+                        <i className="fa-sharp fa-solid fa-house"></i>
                     </div>
                 </div>
             </AppShell>
