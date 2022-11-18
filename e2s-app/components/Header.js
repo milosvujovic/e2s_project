@@ -1,7 +1,5 @@
 import { createStyles } from '@mantine/core';
 import Link from 'next/Link';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faCircle} from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = createStyles((theme, _params) => ({
     headerParent:{
@@ -36,7 +34,16 @@ const useStyles = createStyles((theme, _params) => ({
         borderRadius:"50%",
         width: "30px",
         height: "30px"
+    },
+    systemStatusLight:{
+        backgroundColor:"lightGreen",
+        borderRadius:"50%",
+        width: "10px",
+        height: "10px",
+        marginRight:"10px",
+        marginTop:"2px"
     }
+
 
 }))
 
@@ -47,7 +54,7 @@ export function Header() {
             <div className={classes.headerParent}>
 
                 <div className={classes.headerLeft}>
-                    <FontAwesomeIcon icon={faCircle} className="connected"/>
+                    <div className={classes.systemStatusLight}></div>
                     <p className={classes.systemStatusText}><a href="#">Connected</a></p>
                     <p><a href="#">+ Add manual reading</a></p>
                 </div>

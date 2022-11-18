@@ -10,6 +10,10 @@ const useStyles = createStyles((theme, _params) => ({
     pageLeftSide:{
         width:"100%"
     }
+    ,
+    childParent:{
+        padding:"30px"
+    }
 }))
 
 function AppShellConsole({children, title}) {
@@ -17,7 +21,7 @@ function AppShellConsole({children, title}) {
     return (
         <>
             <Head>
-                <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.1/css/sharp-solid.css"></link>
+
                 <title>
                     {title}
                 </title>
@@ -32,8 +36,9 @@ function AppShellConsole({children, title}) {
                     {<Navigation/>}
                     <div className={classes.pageLeftSide}>
                         {<Header/>}
-                        {children}
-                        <i className="fa-sharp fa-solid fa-house"></i>
+                        <div className={classes.childParent}>
+                            {children}
+                        </div>
                     </div>
                 </div>
             </AppShell>
