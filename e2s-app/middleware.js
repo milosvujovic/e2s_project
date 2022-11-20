@@ -11,6 +11,7 @@ export async function middleware(req) {
         "/helloWorld"
     ]
     const cookie = req.cookies.get("token")
+    //NOTE! Cannot do jwt verification in middleware so still need to check in getauth that user is valid
     let protected_url = false
     for (let url of protectedUrls) {
         if (req.url.includes(url)){
