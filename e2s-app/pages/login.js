@@ -13,11 +13,34 @@ import {
 } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import UnauthenticatedPageShell from "../components/UnauthenticatedPageShell";
 
 const useStyles = createStyles((theme, _params) => ({
     /* Page styling goes here */
-    exampleText:{
-        color:"black"
+    loginForm:{
+        width:"512px",
+        marginLeft:"50px",
+        "& .mantine-TextInput-label":{
+            fontWeight:"normal"
+        },
+        "& .mantine-PasswordInput-label":{
+            fontWeight:"normal"
+        }
+    },
+    titleBlack:{
+        color:"black",
+        fontSize:28
+    },
+    textBlack:{
+        color:"black",
+        fontSize:17
+    },
+    loginError:{
+        color:"red"
+    },
+    submitBtn:{
+        background: "linear-gradient(250deg, rgba(0,62,96,1) 0%, rgba(4,129,196,1) 100%)"
+        //024263    0481C4
     }
 }))
 
@@ -54,32 +77,24 @@ export default function Login() {
 
     return (
         /* HTML page content goes between AppShellConsole tags */
-        <Container size={420} my={40}>
-            <Title
-                align="center"
-                sx={(theme) => ({ fontFamily: `Greycliff CF, ${theme.fontFamily}`, fontWeight: 900 })}
-            >Welcome back!</Title>
-            <Text color="dimmed" size="sm" align="center" mt={5}>
-                Do not have an account yet?{' '}
-                <Anchor href="#" size="sm" onClick={(event) => event.preventDefault()}>
-                Create account
-                </Anchor>
-            </Text>
-
-            <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-                <TextInput label="Email" placeholder="your@email.com" required value={email} onChange={(event) => setEmail(event.currentTarget.value)}/>
-                <PasswordInput label="Password" placeholder="Your password" required mt="md" value={password} onChange={(event) => setPassword(event.currentTarget.value)}/>
-                <Group position="apart" mt="lg">
-                    <Checkbox label="Remember me" sx={{ lineHeight: 1 }} />
-                    <Anchor onClick={(event) => event.preventDefault()} href="#" size="sm">
-                    Forgot password?
+        <UnauthenticatedPageShell>
+            <Paper className={classes.loginForm} withoutBorder size={512} px={40} py={15} pb={40} radius={"0px"}>
+                <p className={classes.titleBlack}>Login to E²S Console</p>
+                <p className={classes.textBlack}>Please login using the credentials provided when creating your account.</p>
+                <p className={classes.loginError}>{loginError}</p>
+                <TextInput label="Email Address" placeholder="your@email.com" required value={email} onChange={(event) => setEmail(event.currentTarget.value)}/>
+                <PasswordInput label="Password" placeholder="Password" required mt="md" value={password} onChange={(event) => setPassword(event.currentTarget.value)}/>
+                <Group mt="sm">
+                    {/*<Checkbox label="Remember me" sx={{ lineHeight: 1 }} />*/}
+                    <Button className={classes.submitBtn} fullWidth mt="sm" onClick={login}>Login</Button>
+                    <Anchor onClick={(event) => event.preventDefault()} href="#" size="17px">
+                        Forgot password? Click to reset
+                    </Anchor>
+                    <Anchor onClick={(event) => event.preventDefault()} href="#" size="17px">
+                        Dont have an account? Register here
                     </Anchor>
                 </Group>
-                <p>{loginError}</p>
-                <Button fullWidth mt="xl" onClick={login}>
-                Log in
-                </Button>
             </Paper>
-        </Container>
+        </UnauthenticatedPageShell>
     );
 }
