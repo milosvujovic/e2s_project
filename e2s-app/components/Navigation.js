@@ -15,7 +15,7 @@ import {NavigationElement} from "../components/NavigationElement";
 const useStyles = createStyles((theme, _params, getRef) => ({
     navigationParent:{
         height:"100vh",
-        width:"340px",
+        width:"330px",
         backgroundColor:"#363740"
     },
     logoPlaceholder:{
