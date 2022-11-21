@@ -30,7 +30,6 @@ Dev Deploy:
     script:
         - mkdir -p ~/.ssh
         - chmod 700 ~/.ssh
-
         - echo -e "$SSH_KEY" >> ~/.ssh/deploy.key
         - chmod 600 ~/.ssh/deploy.key
         - echo -e "\nHost deploy\n\tHostName $SSH_HOST\n\tUser $SSH_USER\n\tIdentityFile ~/.ssh/deploy.key\n\tStrictHostKeyChecking no " >> ~/.ssh/config
@@ -45,4 +44,8 @@ Dev Deploy:
         - scp ./next.config.js deploy:/home/ubuntu/e2s_dev
         - scp ./next-i18next.config.js deploy:/home/ubuntu/e2s_dev
 
+<<<<<<< HEAD
         - ssh deploy 'cd ~/e2s_dev; screen -S e2s_dev -X quit; npm i --legacy-peer-deps; screen -dmS e2s_dev npm run start -- --port 3001'
+=======
+        - ssh deploy 'cd ~/e2s_dev; screen -S e2s_dev -X quit; npm i; screen -dmS e2s_dev npm run start -- --port 3001'
+>>>>>>> navigation-bar

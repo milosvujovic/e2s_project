@@ -5,7 +5,9 @@ import { MantineProvider } from '@mantine/core';
 import useSWR, { SWRConfig } from 'swr';
 import { appWithTranslation } from 'next-i18next';
 
-function App({ Component, pageProps }: AppProps) {
+
+export default function App({ Component, pageProps }: AppProps) {
+
     return (
         <SWRConfig 
           value={{
