@@ -1,5 +1,7 @@
 import { createStyles } from '@mantine/core';
 import Link from 'next/Link';
+import {useState} from "react";
+import Modal from '../components/Modal'
 
 const useStyles = createStyles((theme, _params) => ({
     headerParent:{
@@ -49,6 +51,8 @@ const useStyles = createStyles((theme, _params) => ({
 
 export function Header() {
     const { classes } = useStyles();
+    const [showModal, setShowModal] = useState(false);
+
     return (
         <>
             <div className={classes.headerParent}>
@@ -56,7 +60,17 @@ export function Header() {
                 <div className={classes.headerLeft}>
                     <div className={classes.systemStatusLight}></div>
                     <p className={classes.systemStatusText}><a href="#">Connected</a></p>
-                    <p><a href="#">+ Add manual reading</a></p>
+                    <p onClick={() => setShowModal(true)}>
+                        <a href="#">+ Add manual reading</a>
+                    </p>
+
+                    <Modal
+                        onClose={() => setShowModal(false)}
+                        show={showModal}
+                    >
+                        Hello from the modal!
+                    </Modal>
+
                 </div>
 
                 <div className={classes.headerRight}>
