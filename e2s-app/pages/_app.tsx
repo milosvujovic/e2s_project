@@ -6,7 +6,7 @@ import useSWR, { SWRConfig } from 'swr';
 import { appWithTranslation } from 'next-i18next';
 
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
 
     return (
         <SWRConfig 
