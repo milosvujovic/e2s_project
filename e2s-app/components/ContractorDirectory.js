@@ -39,21 +39,7 @@ function ContractorDirectory(){
 	}	
 
 	const { data, error } = useSWR(`/api/contractor_data`);
-	const [ contractorRows, setContractorRows ] = useState('');
-
-	useEffect(() => {
-		if (data) {
-			setContractorRows(data.map((contractor) => (
-		    <tr>
-		      <td>{contractor.name}</td>
-		      <td>{contractor.role}</td>
-		      <td>{contractor.email}</td>
-		      <td><Anchor onClick={() => openContractorModal(contractor)}>More Details</Anchor></td>
-		    </tr>
-		  )));
-	}});
 	
-
 	return(
 		<Group height="100px">
 			<Modal
@@ -150,7 +136,16 @@ function ContractorDirectory(){
 		          <th></th>
 		        </tr>
 		      </thead>
-		      <tbody>{contractorRows}</tbody>
+		      <tbody>
+			      {data.map((contractor) => (
+					    <tr>
+					      <td>{contractor.name}</td>
+					      <td>{contractor.role}</td>
+					      <td>{contractor.email}</td>
+					      <td><Anchor onClick={() => openContractorModal(contractor)}>More Details</Anchor></td>
+					    </tr>
+					  ))}
+		      </tbody>
 		    </Table>
 		  }
 
