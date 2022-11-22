@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { createStyles, Group, Text, Table, Anchor, Modal, Accordion, Loader, Image } from '@mantine/core';
+import { createStyles, Group, Text, Table, Anchor, Modal, Accordion, Loader, Image, Center, Title } from '@mantine/core';
 import useSWR from 'swr';
-import { FileDownload } from 'tabler-icons-react';
+import { FileDownload, Download, FileText } from 'tabler-icons-react';
+import Link from 'next/link'
 
 
 const useStyles = createStyles((theme, _params) => ({
@@ -34,7 +35,7 @@ function ContractorDirectory(){
 	function openContractorModal(contractor) {
 		setContractorModalOpened(true);
 		setSelectedContractor(contractor);
-	}
+	}	
 
 	const { data, error } = useSWR(`/api/contractor_data`)
 	if (!data) { return }
@@ -62,24 +63,58 @@ function ContractorDirectory(){
 	        	!selectedContactor ? <Text>No contractor selected</Text> :
 
 	        	<Group>
-	        		<Image src={"data:image/"+selectedContactor.logoB64} width="100px"/>
-	        		<Text size="sm">Description: {selectedContactor.description}<br />
-	        		Email Address: <Anchor href={"mailto:" + selectedContactor.email}>{selectedContactor.email}</Anchor><br />
-	        		Phone Number: {selectedContactor.phone}</Text>
+		        	<Group style={{width: "100%"}}>
+		        		<Image src={"data:image/"+selectedContactor.logoB64} height="40px" style={{width: "auto"}}/>
+	        		</Group>
+
+	        		<Group style={{width: "100%"}}>
+		        		<Text size="sm">{selectedContactor.description}</Text>
+	        		</Group>
+
 	        		{
 	        			!selectedContactor.manuals ?
-								<Accordion chevronPosition="right" chevron={<i></i>} variant="contained" defaultValue="customization" style={{ width: '100%' }}>
+								<Accordion chevronPosition="right" chevron={<i></i>} variant="contained" defaultValue="customization" style={{width: "100%"}}>
 						      <Accordion.Item value="downloads">
 						        <Accordion.Control icon={<FileDownload size={20} color="#666"/>} disabled>No downloads available</Accordion.Control>
 						      </Accordion.Item>
 					      </Accordion>
 	        			:
-		        		<Accordion chevronPosition="right" defaultValue="customization"  variant="contained" style={{ width: '100%' }}>
+		        		<Accordion chevronPosition="right" defaultValue="customization"  variant="contained" style={{width: "100%"}}>
 						      <Accordion.Item value="downloads">
 						        <Accordion.Control icon={<FileDownload size={20} color="#666"/>}>{selectedContactor.manuals.length} download{(!selectedContactor.manuals.length == 1)?"":"s"} available</Accordion.Control>
 						        <Accordion.Panel>
-						        	<Group style={{ width: '100%', paddingTop: '16px' }}>
-						        		<Loader style={{ width: '100%' }}/>
+						        	<Group>
+							        	<Table>
+										      <tbody>
+										      	{selectedContactor.manuals.map((download) => (
+															<tr style={{	':hover': {backgroundColor: "#ccc"}}}>
+																<td style={{width: "40px"}}>
+																	<Center style={{ width: "100%", height: "100%" }}>
+																		<FileText size={20} color="#666"/>
+																	</Center>
+																</td>
+
+											      		<td>
+											      			<Text style={{float: 'left'}}>{download.name}</Text>
+											      		</td>
+
+											      		<td>
+											      			<Text size="xs" color="#666">{download.language}</Text>
+											      		</td>
+
+											      		<td>
+											      			<Text size="xs" color="#666">{download.format}</Text>
+											      		</td>
+
+											      		<td>
+												      		<Link href="#">
+												      			<Download size={20} color="#666" style={{float: 'right'}}/>
+											      			</Link>
+											      		</td>
+											      	</tr>
+									      		))}
+										      </tbody>
+										    </Table>
 						        	</Group>
 						        </Accordion.Panel>
 						      </Accordion.Item>
@@ -87,6 +122,11 @@ function ContractorDirectory(){
 				      }
 						</Group>
 	        }
+
+	        <Group style={{width: "100%", marginTop: "20px"}} position="apart">
+        		<Text size="xs"><Anchor href={"mailto:" + selectedContactor.email}>{selectedContactor.email}</Anchor></Text>
+        		<Text size="xs">{selectedContactor.phone}</Text>
+      		</Group>
       </Modal>
 
 			{/* This container will change when Will pushes his standard components */}
