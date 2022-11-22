@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createStyles, Group, Text, Table, Anchor, Modal, Accordion, Loader, Image, Center, Title } from '@mantine/core';
 import useSWR from 'swr';
-import { FileDownload, Download, FileText } from 'tabler-icons-react';
+import { FileDownload, Download, FileText, FileX } from 'tabler-icons-react';
 import Link from 'next/link'
 
 
@@ -27,6 +27,7 @@ const useStyles = createStyles((theme, _params) => ({
 	}
 }))
 
+
 function ContractorDirectory(){
 	const { classes } = useStyles();
 	let [contractorModalOpened, setContractorModalOpened] = useState(false);
@@ -37,21 +38,24 @@ function ContractorDirectory(){
 		setSelectedContractor(contractor);
 	}	
 
-	const { data, error } = useSWR(`/api/contractor_data`)
-	if (!data) { return }
+	const { data, error } = useSWR(`/api/contractor_data`);
+	const [ contractorRows, setContractorRows ] = useState('');
 
-	const rows = data.map((contractor) => (
-    <tr>
-      <td>{contractor.name}</td>
-      <td>{contractor.role}</td>
-      <td>{contractor.email}</td>
-      <td><Anchor onClick={() => openContractorModal(contractor)}>More Details</Anchor></td>
-    </tr>
-  ));
+	useEffect(() => {
+		if (data) {
+			setContractorRows(data.map((contractor) => (
+		    <tr>
+		      <td>{contractor.name}</td>
+		      <td>{contractor.role}</td>
+		      <td>{contractor.email}</td>
+		      <td><Anchor onClick={() => openContractorModal(contractor)}>More Details</Anchor></td>
+		    </tr>
+		  )));
+	}});
 	
 
 	return(
-		<Group>
+		<Group height="100px">
 			<Modal
 	        opened={contractorModalOpened}
 	        onClose={() => setContractorModalOpened(false)}
@@ -72,7 +76,7 @@ function ContractorDirectory(){
 	        		</Group>
 
 	        		{
-	        			!selectedContactor.manuals ?
+	        			!selectedContactor.downloads ?
 								<Accordion chevronPosition="right" chevron={<i></i>} variant="contained" defaultValue="customization" style={{width: "100%"}}>
 						      <Accordion.Item value="downloads">
 						        <Accordion.Control icon={<FileDownload size={20} color="#666"/>} disabled>No downloads available</Accordion.Control>
@@ -81,16 +85,16 @@ function ContractorDirectory(){
 	        			:
 		        		<Accordion chevronPosition="right" defaultValue="customization"  variant="contained" style={{width: "100%"}}>
 						      <Accordion.Item value="downloads">
-						        <Accordion.Control icon={<FileDownload size={20} color="#666"/>}>{selectedContactor.manuals.length} download{(!selectedContactor.manuals.length == 1)?"":"s"} available</Accordion.Control>
+						        <Accordion.Control icon={<FileDownload size={20} color="#666"/>}>{selectedContactor.downloads.length} download{(!selectedContactor.downloads.length == 1)?"":"s"} available</Accordion.Control>
 						        <Accordion.Panel>
 						        	<Group>
 							        	<Table>
 										      <tbody>
-										      	{selectedContactor.manuals.map((download) => (
+										      	{selectedContactor.downloads.map((download) => (
 															<tr style={{	':hover': {backgroundColor: "#ccc"}}}>
 																<td style={{width: "40px"}}>
 																	<Center style={{ width: "100%", height: "100%" }}>
-																		<FileText size={20} color="#666"/>
+																		{(download.format=="pdf")?<FileText size={20} color="#666"/>:<FileX size={20} color="#666"/>}
 																	</Center>
 																</td>
 
@@ -120,13 +124,13 @@ function ContractorDirectory(){
 						      </Accordion.Item>
 					      </Accordion>
 				      }
+
+			        <Group style={{width: "100%", marginTop: "2px"}} position="apart">
+		        		<Text size="xs"><Anchor href={"mailto:" + selectedContactor.email}>{selectedContactor.email}</Anchor></Text>
+		        		<Text size="xs">{selectedContactor.phone}</Text>
+		      		</Group>
 						</Group>
 	        }
-
-	        <Group style={{width: "100%", marginTop: "20px"}} position="apart">
-        		<Text size="xs"><Anchor href={"mailto:" + selectedContactor.email}>{selectedContactor.email}</Anchor></Text>
-        		<Text size="xs">{selectedContactor.phone}</Text>
-      		</Group>
       </Modal>
 
 			{/* This container will change when Will pushes his standard components */}
@@ -134,6 +138,9 @@ function ContractorDirectory(){
 				<Text className={classes.title}><b>Contractor Directory</b></Text>
 				<Text className={classes.subtitle} size="14px">Find contact details, specifications and manuals</Text>	
 
+				{
+					!data?
+					<Loader />:
 				<Table>
 		      <thead>
 		        <tr>
@@ -143,10 +150,12 @@ function ContractorDirectory(){
 		          <th></th>
 		        </tr>
 		      </thead>
-		      <tbody>{rows}</tbody>
+		      <tbody>{contractorRows}</tbody>
 		    </Table>
+		  }
 
 			</div>
+
 
     </Group>
 
