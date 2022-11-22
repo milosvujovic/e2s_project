@@ -22,6 +22,7 @@ const Modal = ({ show, onClose, children, title }) => {
                         x
                     </a>
                 </StyledModalHeader>
+                <h1 className= "modal-head"> Add a meter reading</h1>
                 {title && <StyledModalTitle>{title}</StyledModalTitle>}
                 <StyledModalBody>{children}</StyledModalBody>
             </StyledModal>
@@ -45,15 +46,18 @@ const StyledModalBody = styled.div`
 const StyledModalHeader = styled.div`
   display: flex;
   justify-content: flex-end;
-  font-size: 25px;
+  font-size: 30px;
 `;
 
 const StyledModal = styled.div`
   background: white;
-  width: 500px;
-  height: 600px;
-  border-radius: 15px;
-  padding: 15px;
+  width: 645px;
+  height: 400px;
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-bottom: 5px;
 `;
 const StyledModalOverlay = styled.div`
   position: absolute;

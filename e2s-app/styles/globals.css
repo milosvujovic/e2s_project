@@ -122,3 +122,49 @@ html, body, #__next{
   width: 1.4ex;
   height: 1.4ex;
 }
+.modal-head{
+  text-align: left;
+  font-size: 3.7ex;
+  color: #111111;
+  font-family: "Arial Regular";
+}
+.reading-type{
+  padding: 1ex;
+  color: #A6A6A6;
+  font-family: "Arial Regular";
+}
+.label{
+  color: #111111;
+}
+.lines::after{
+  content: "";
+  position: absolute;
+  margin-left:22ex;
+  height: 0.1ex;
+  background: lightgrey;
+  width: 370px;
+  top: 40.3%;
+}
+.lines2::after{
+  content: "";
+  position: absolute;
+  margin-left:15ex;
+  height: 0.1ex;
+  background: lightgrey;
+  width: 430px;
+  top: 52.5%;
+}
+.btn-wrap{
+  padding: 1ex;
+}
+.modal-btn{
+  color: white;
+  padding-right: 3ex;
+  padding-left: 3ex;
+  padding-top: 0.8ex;
+  padding-bottom: 0.8ex;
+  border-radius: 6px;
+  border-color: white;
+  background: rgb(0,159,255);
+  background: linear-gradient(90deg, rgba(0,159,255,1) 0%, rgba(23,79,156,1) 55%, rgba(1,57,115,1) 100%);
+}
