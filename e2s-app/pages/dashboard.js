@@ -14,7 +14,7 @@ export default function Dashboard() {
   return (
 	  /* HTML page content goes between AppShellConsole tags */
 	  <AppShellConsole title={"Dashboard"}>
-
+			<h1>Hello</h1>
 	  </AppShellConsole>
   );
 }
