@@ -10,7 +10,9 @@ const useStyles = createStyles((theme, _params) => ({
 }))
 
 export async function getServerSideProps(context) {
-  const user = getUser(context.req)
+  const user = await getUser(context.req)
+
+  console.log(user)
 
   return { props: { user } }
 }
