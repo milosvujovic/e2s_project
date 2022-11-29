@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app'
 import { MantineProvider } from '@mantine/core';
 import useSWR, { SWRConfig } from 'swr';
 import { appWithTranslation } from 'next-i18next';
+import { NotificationsProvider } from '@mantine/notifications';
 
 function App({ Component, pageProps }: AppProps) {
     return (
@@ -21,7 +22,9 @@ function App({ Component, pageProps }: AppProps) {
                     colorScheme: 'light'
                 }}
             >
-                <Component {...pageProps} />
+                <NotificationsProvider>
+                    <Component {...pageProps} />
+                </NotificationsProvider>
             </MantineProvider>
         </SWRConfig>
     )

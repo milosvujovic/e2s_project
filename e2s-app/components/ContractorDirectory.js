@@ -3,6 +3,7 @@ import { createStyles, Group, Text, Table, Anchor, Modal, Accordion, Loader, Ima
 import useSWR from 'swr';
 import { FileDownload, Download, FileText, FileX } from 'tabler-icons-react';
 import Link from 'next/link'
+import { showNotification } from '@mantine/notifications';
 
 
 const useStyles = createStyles((theme, _params) => ({
@@ -37,6 +38,44 @@ function ContractorDirectory(){
 		setContractorModalOpened(true);
 		setSelectedContractor(contractor);
 	}	
+
+	function downloadFile(url) {
+	  const a = document.createElement('a');
+	  a.href = url;
+	  a.download = url.split('/').pop();
+	  a.target = '_blank';
+	  document.body.appendChild(a);
+	  a.click();
+	  document.body.removeChild(a);
+	}
+
+	async function getSignedContractorFileUrl(s3guid) {
+    const response = await fetch(`http://localhost:3000/api/presign_contractor_file?key=${s3guid}`, {}); 
+    const json = await response.json();
+    return json;
+	}
+
+	function signAndDownloadContractorFile(s3guid) {
+		showNotification({
+      title: 'Your download will start shortly.',
+      color: 'blue',
+			autoClose: 5000,
+    })
+		getSignedContractorFileUrl()
+		.then(resp => {
+			if ('url' in resp) {
+	    	downloadFile(resp.url)
+			}
+		})
+		.catch( err => {
+					showNotification({
+            title: 'Download Error',
+            message: `${err}`,
+            color: 'red',
+  					autoClose: 5000,
+          })
+	  })
+	}
 
 	const { data, error } = useSWR(`/api/contractor_data`);
 	
@@ -97,7 +136,7 @@ function ContractorDirectory(){
 											      		</td>
 
 											      		<td>
-												      		<Link href="#">
+												      		<Link href="#" onClick={() => {signAndDownloadContractorFile(download.s3guid + download.format)}}>
 												      			<Download size={20} color="#666" style={{float: 'right'}}/>
 											      			</Link>
 											      		</td>
