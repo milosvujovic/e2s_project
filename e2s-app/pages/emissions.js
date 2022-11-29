@@ -45,7 +45,9 @@ function dataSourceMapping(databaseResult){
 export default function Emissions() {
 	const { classes } = useStyles();
 	const { data, error } = useSWR(`/api/infrastructure`)
+	let { allDataSourceOptions } = []
 
+	let [dataSourceValue, setDataSourceValue] = useState([]);
 	let [startTimestamp, setStartTimestamp] = useState();
 	let [endTimestamp, setEndTimestamp] = useState();
 
@@ -65,7 +67,7 @@ export default function Emissions() {
 			})
 
 		});
-
+		allDataSourceOptions = dataSourceOptions
 		return dataSourceOptions;
 	}
 
@@ -104,6 +106,8 @@ export default function Emissions() {
 						  <MultiSelect
 							  data={getDataSourceOptions()}
 							  placeholder="Data sources"
+							  value={dataSourceValue}
+							  onChange={setDataSourceValue}
 							  className={classes.emissionsDataSourceSelector}
 						  />
 				  }
@@ -112,7 +116,7 @@ export default function Emissions() {
 
 			  <RoundedContainer>
 				  <ContainerTitle title={"Emissions by Source"} icon={GraphIcon}/>
-
+				  <EmissionsGraph className={classes.emissionsBySourceGraphing} startTimestamp={startTimestamp} endTimestamp={endTimestamp} allDataSourceOptions ={allDataSourceOptions} selectedDataSourceOptions={dataSourceValue}/>
 			  </RoundedContainer>
 
 		  </div>
