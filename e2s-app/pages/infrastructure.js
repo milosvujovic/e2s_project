@@ -27,7 +27,6 @@ export default function Infrastructure({user}) {
 	  <AppShellConsole title={"Infrastructure"} user={user}>
 	  	<TimeRangeSelector setEndTimestamp={setEndTimestamp} setStartTimestamp={setStartTimestamp}/>
 		  <TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
-		  {user.firstName}
 	  </AppShellConsole>
   );
 }

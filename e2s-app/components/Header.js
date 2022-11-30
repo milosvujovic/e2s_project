@@ -60,8 +60,8 @@ export function Header({user=null}) {
                 </div>
 
                 <div className={classes.headerRight}>
-                    <p><a href="#">Hello, {user==null?"[Username]":user.firstName}. Not you?</a></p>
-                    <a className={classes.logoutButton} href="#">Logout</a>
+                    <p>Hello, {user==null?"[Username]":user.firstName}. Not you?</p>
+                    <a className={classes.logoutButton} href="/api/logout">Logout</a>
                     <img className={classes.profilePicture}/>
                 </div>
 

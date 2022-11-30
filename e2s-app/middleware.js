@@ -1,6 +1,8 @@
 import {NextResponse} from "next/server";
 
 export async function middleware(req) {
+    const response = NextResponse.next();
+
     const protectedUrls = [
         "/dashboard",
         "/emissions",
