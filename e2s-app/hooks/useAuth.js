@@ -13,7 +13,7 @@ export function verifyToken(jwtToken) {
     }
 }
 
-export function getUser(req){
+export async function getUser(req){
     const token = req.cookies["token"]
 
     if (token == undefined) {
@@ -22,5 +22,27 @@ export function getUser(req){
 
     const tokenData = verifyToken(token)
 
+    let response = await fetch(`http://localhost:3000/api/permission_groups?company=${tokenData.company}`)
+
+    let data = await response.json() 
+
+    tokenData.permission_groups = data
+
+    let flat_permissions = []
+    for (let permission of tokenData.permissions.direct){
+        flat_permissions.push(permission.name)
+    }
+
+    for (let group of tokenData.permissions.groups){
+        let permission_groups_filtered = tokenData.permission_groups.filter(pgroup => pgroup.name == group)[0]
+        for (let permission of permission_groups_filtered.permissions){
+            flat_permissions.push(permission.name)
+        }
+    }
+
+    tokenData.flat_permissions = flat_permissions
+
     return tokenData
+
+
 }
