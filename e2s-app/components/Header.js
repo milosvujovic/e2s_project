@@ -47,7 +47,7 @@ const useStyles = createStyles((theme, _params) => ({
 
 }))
 
-export function Header() {
+export function Header({user=null}) {
     const { classes } = useStyles();
     return (
         <>
@@ -60,7 +60,7 @@ export function Header() {
                 </div>
 
                 <div className={classes.headerRight}>
-                    <p><a href="#">Hello, [username]. Not you?</a></p>
+                    <p><a href="#">Hello, {user==null?"[Username]":user.firstName}. Not you?</a></p>
                     <a className={classes.logoutButton} href="#">Logout</a>
                     <img className={classes.profilePicture}/>
                 </div>
