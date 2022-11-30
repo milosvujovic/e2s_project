@@ -1,21 +1,19 @@
 import { createStyles } from '@mantine/core';
 import AppShellConsole from "../components/AppShell";
+import EnergyBySourceGraph from '../components/EnergyBySourceGraph';
 
 const useStyles = createStyles((theme, _params) => ({
-	/* Page styling goes here */
-	button:{
-		border:"1px solid blue"
-	}
+
 }))
 
 export default function Usage() {
-	const { classes } = useStyles();
+	const {classes} = useStyles();
 
-  return (
-	  /* HTML page content goes between AppShellConsole tags */
-	  <AppShellConsole title={"Usage"}>
-
-	  </AppShellConsole>
-  );
+	return (
+		/* HTML page content goes between AppShellConsole tags */
+		<AppShellConsole title={"Usage"}>
+			<EnergyBySourceGraph/>
+		</AppShellConsole>
+	);
 }
 
