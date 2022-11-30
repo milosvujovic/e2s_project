@@ -61,7 +61,7 @@ function ContractorDirectory(){
       color: 'blue',
 			autoClose: 5000,
     })
-		getSignedContractorFileUrl()
+		getSignedContractorFileUrl(s3guid)
 		.then(resp => {
 			if ('url' in resp) {
 	    	downloadFile(resp.url)
@@ -136,7 +136,7 @@ function ContractorDirectory(){
 											      		</td>
 
 											      		<td>
-												      		<Link href="#" onClick={() => {signAndDownloadContractorFile(download.s3guid + download.format)}}>
+												      		<Link href="#" onClick={() => {signAndDownloadContractorFile(download.s3guid + "." + download.format)}}>
 												      			<Download size={20} color="#666" style={{float: 'right'}}/>
 											      			</Link>
 											      		</td>
