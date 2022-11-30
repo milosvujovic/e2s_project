@@ -12,8 +12,6 @@ const useStyles = createStyles((theme, _params) => ({
 export async function getServerSideProps(context) {
   const user = await getUser(context.req)
 
-  console.log(user)
-
   return { props: { user } }
 }
 
@@ -26,7 +24,7 @@ export default function Infrastructure({user}) {
 
   return (
 	  /* HTML page content goes between AppShellConsole tags */
-	  <AppShellConsole title={"Infrastructure"}>
+	  <AppShellConsole title={"Infrastructure"} user={user}>
 	  	<TimeRangeSelector setEndTimestamp={setEndTimestamp} setStartTimestamp={setStartTimestamp}/>
 		  <TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
 	  </AppShellConsole>
