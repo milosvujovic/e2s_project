@@ -60,7 +60,7 @@ export function Header() {
                 </div>
 
                 <div className={classes.headerRight}>
-                    <p><a href="#">Hello, [username]. Not you?</a></p>
+                    <p>Hello, [username]. Not you?</p>
                     <a className={classes.logoutButton} href="/api/logout">Logout</a>
                     <img className={classes.profilePicture}/>
                 </div>
