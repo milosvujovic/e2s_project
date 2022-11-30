@@ -10,52 +10,57 @@ const useStyles = createStyles((theme, _params) => ({
 
 function EmissionsGraph({startTimestamp=null, endTimestamp=null, allDataSourceOptions=null, selectedDataSourceOptions=null}){
 
-	console.log(allDataSourceOptions)
-	console.log(selectedDataSourceOptions)
-
-
-	if(startTimestamp == null || endTimestamp == null) {
-		console.warn("Timestamps Not Set")
-		return <p>Timestamps not set</p>
-	}
-
-	let urlArray = [];
-
-	console.log("TYPE----")
-	console.log(typeof allDataSourceOptions)
-
-	if(Object.keys(selectedDataSourceOptions).length == 0 && allDataSourceOptions != null){
-		allDataSourceOptions.forEach(function (dataSourceOption, i){
-			let energyType = (dataSourceOption.value.toString()).split(".")[0]
-			let equipmentName = dataSourceOption.value.split(".")[1]
-			urlArray.push(`/api/usage?startTimestamp=${startTimestamp}&endTimestamp=${endTimestamp}&IO=output&energyType=`+ energyType + `&equipment=` + equipmentName)
-		});
-
-	}else{
-		selectedDataSourceOptions.forEach(function (dataSourceOption, i){
-			let energyType = dataSourceOption.split(".")[0]
-			let equipmentName = dataSourceOption.split(".")[1]
-			urlArray.push(`/api/usage?startTimestamp=${startTimestamp}&endTimestamp=${endTimestamp}&IO=output&energyType=`+ energyType + `&equipment=` + equipmentName)
-		});
-	}
-
-	const { data } = useSWR([urlArray], arrayFetcher);
 	const { classes } = useStyles();
+	let [data, setData] = useState([]);
 
+	async function getTimeSeriesData(){
 
-	function arrayFetcher(...urlArr) {
-		const f = (u) => fetch(u).then((r) => r.json());
-		return Promise.all(urlArr.map(f));
-	}
+		console.log("ALL DATA SOURCES----")
+		console.log(allDataSourceOptions)
+		console.log("SELECTED DATA SOURCES----")
+		console.log(selectedDataSourceOptions)
 
-
-	function getOptions(){
-
-		if(!data){
-			return
+		if(startTimestamp == null || endTimestamp == null) {
+			console.warn("Timestamps Not Set")
+			return <p>Timestamps not set</p>
 		}
 
+		let promiseList = [];
+
+		if(Object.keys(selectedDataSourceOptions).length == 0 && allDataSourceOptions != null){
+
+			for(let dataSourceOption of allDataSourceOptions){
+				let energyType = (dataSourceOption.value.toString()).split(".")[0]
+				let equipmentName = dataSourceOption.value.split(".")[1]
+
+				let response = await fetch(`/api/usage?startTimestamp=${startTimestamp}&endTimestamp=${endTimestamp}&IO=output&energyType=`+ energyType + `&equipment=` + equipmentName)
+				promiseList.push(response.json())
+			}
+
+
+		}else{
+			for(let dataSourceOption of selectedDataSourceOptions){
+				let energyType = dataSourceOption.split(".")[0]
+				let equipmentName = dataSourceOption.split(".")[1]
+
+				let response = await fetch(`/api/usage?startTimestamp=${startTimestamp}&endTimestamp=${endTimestamp}&IO=output&energyType=`+ energyType + `&equipment=` + equipmentName)
+				promiseList.push(response.json())
+			};
+		}
+
+		Promise.all(promiseList).then((v) => {
+			setData([...promiseList])
+		});
+	}
+
+	useEffect(() => {
+		getTimeSeriesData()
+
+		console.log("TIMESERIES RESULT----")
 		console.log(data)
+	}, [startTimestamp, endTimestamp, allDataSourceOptions, selectedDataSourceOptions])
+
+	function getOptions(){
 
 		const option = {
 
@@ -64,13 +69,9 @@ function EmissionsGraph({startTimestamp=null, endTimestamp=null, allDataSourceOp
 	}
 
 	return(
-		<div>
-			{
-				!data?
-				<Loader />:
-					<ReactECharts option={getOptions()}/>
-			}
-		</div>
+		<p>
+			{data.length}
+		</p>
 	)
 }
 
