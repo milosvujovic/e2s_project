@@ -70,7 +70,8 @@ export default function Login() {
             }
         });
 
-        xhr.open("POST", "http://localhost:3000/api/login");
+        console.log(process.env.HOST)
+        xhr.open("POST", "api/login");
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(data);
     }

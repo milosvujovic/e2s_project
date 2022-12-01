@@ -1,6 +1,6 @@
 import db from '../../db';
 
-export default async function (req, res) {
+export default async function temp_data(req, res) {
 	//This is here for testing, this would be set dynamically
 	const businessName = "testcompany"
 

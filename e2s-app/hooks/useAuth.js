@@ -22,7 +22,7 @@ export async function getUser(req){
 
     const tokenData = verifyToken(token)
 
-    let response = await fetch(`http://localhost:3000/api/permission_groups?company=${tokenData.company}`)
+    let response = await fetch(`${process.env.HOST}/api/permission_groups?company=${tokenData.company}`)
 
     let data = await response.json() 
 

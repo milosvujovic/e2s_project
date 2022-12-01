@@ -1,4 +1,4 @@
-export default async function (req, res) {
+export default async function register(req, res) {
     const query = req.query;
     const { password } = query;
     const bcrypt = require("bcrypt");

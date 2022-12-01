@@ -1,5 +1,6 @@
 import { createStyles } from '@mantine/core';
-import Link from 'next/Link';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const useStyles = createStyles((theme, _params) => ({
     headerParent:{
@@ -47,7 +48,7 @@ const useStyles = createStyles((theme, _params) => ({
 
 }))
 
-export function Header() {
+export function Header({user=null}) {
     const { classes } = useStyles();
     return (
         <>
@@ -56,13 +57,13 @@ export function Header() {
                 <div className={classes.headerLeft}>
                     <div className={classes.systemStatusLight}></div>
                     <p className={classes.systemStatusText}><a href="#">Connected</a></p>
-                    <p><a href="#">+ Add manual reading</a></p>
+                    <p><Link href="#">+ Add manual reading</Link></p>
                 </div>
 
                 <div className={classes.headerRight}>
-                    <p><a href="#">Hello, [username]. Not you?</a></p>
-                    <a className={classes.logoutButton} href="#">Logout</a>
-                    <img className={classes.profilePicture}/>
+                    <p>Hello, {user==null?"[Username]":user.firstName}. Not you?</p>
+                    <Link className={classes.logoutButton} href="/api/logout">Logout</Link>
+                    <Image alt="Profile Picture" className={classes.profilePicture}/>
                 </div>
 
             </div>
