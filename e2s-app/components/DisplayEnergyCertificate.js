@@ -8,7 +8,7 @@ const useStyles = createStyles((theme, _params) => ({
         borderRadius: "10px",
         boxShadow: "0px 0px 10px rgb(0 0 0 / 4%)",
         background:"white",
-        width:"600px",
+        width:"300px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center"
