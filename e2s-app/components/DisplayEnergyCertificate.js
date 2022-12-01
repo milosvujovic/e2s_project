@@ -22,7 +22,8 @@ function DisplayEnergyCertificate() {
         <div className={classes.tmpContainer}>
             <Image src = "displayEnergyCertificate.svg"
             width={259}
-            height={301}/>
+            height={301}
+            alt="Display Energy Certificate band B index 42"/>
         </div>)
 }
 
