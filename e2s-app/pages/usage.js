@@ -20,7 +20,7 @@ export default function Usage({user}) {
 
 	return (
 		/* HTML page content goes between AppShellConsole tags */
-		<AppShellConsole title={"Usage"}>
+		<AppShellConsole title={"Usage"} user={user}>
 			<EnergyBySourceGraph/>
 		</AppShellConsole>
 	);
