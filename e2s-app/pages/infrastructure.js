@@ -5,6 +5,7 @@ import TempGraph from "../components/TempGraph";
 import ContractorDirectory from "../components/ContractorDirectory";
 import TimeRangeSelector from "../components/TimeRangeSelector";
 import { getUser } from '../hooks/useAuth';
+import DisplayEnergyCertificate from '../components/DisplayEnergyCertificate';
 
 const useStyles = createStyles((theme, _params) => ({
 
@@ -27,10 +28,15 @@ export default function Infrastructure({user}) {
 	  /* HTML page content goes between AppShellConsole tags */
 	  <AppShellConsole title={"Infrastructure"} user={user}>
 	  	<TimeRangeSelector setEndTimestamp={setEndTimestamp} setStartTimestamp={setStartTimestamp}/>
+<<<<<<< HEAD
 
 			<TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
 			<ContractorDirectory />
 
+=======
+		  <TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
+      <DisplayEnergyCertificate/>
+>>>>>>> origin/dev
 	  </AppShellConsole>
   );
 }

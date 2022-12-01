@@ -6,9 +6,15 @@ import useSWR from 'swr';
 
 const useStyles = createStyles((theme, _params) => ({
 	tmpContainer:{
-		border:"1px solid blue",
-		background:"white",
-		width:"400px"
+		margin: "10px 10px 0 10px",
+        padding: "20px",
+        borderRadius: "10px",
+        boxShadow: "0px 0px 10px rgb(0 0 0 / 4%)",
+        background:"white",
+        width:"600px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
 	},
 	graphContainer:{
 		width:"100%",
