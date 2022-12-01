@@ -16,8 +16,6 @@ const useStyles = createStyles((theme, _params) => ({
     }
 }))
 
-//test
-
 function AppShellConsole({children, title, user=null}) {
     const { classes } = useStyles();
     return (
