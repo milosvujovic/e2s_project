@@ -67,7 +67,7 @@ export function Header({user=null}) {
                 <div className={classes.headerRight}>
                     <p>Hello, {user==null?"[Username]":user.firstName}. Not you?</p>
                     <Link prefetch={false} className={classes.logoutButton} href="/api/logout">Logout</Link>
-                    <Image alt="Profile Picture" className={classes.profilePicture}/>
+                    <Image alt="Profile Picture" className={classes.profilePicture} src={user.profilePictureB64}/>
                 </div>
 
             </div>
