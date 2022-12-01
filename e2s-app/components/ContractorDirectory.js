@@ -93,7 +93,7 @@ function ContractorDirectory(){
 
 	        	<Group>
 		        	<Group style={{width: "100%"}}>
-		        		<Image src={"data:image/"+selectedContactor.logoB64} height="40px" style={{width: "auto"}}/>
+		        		<img src={"data:image/"+selectedContactor.logoB64} style={{height: "40px"}}/>
 	        		</Group>
 
 	        		<Group style={{width: "100%"}}>
@@ -104,24 +104,24 @@ function ContractorDirectory(){
 	        			!selectedContactor.downloads ?
 								<Accordion chevronPosition="right" chevron={<i></i>} variant="contained" defaultValue="customization" style={{width: "100%"}}>
 						      <Accordion.Item value="downloads">
-						        <Accordion.Control icon={<FileDownload size={20} color="#666"/>} disabled>No downloads available</Accordion.Control>
+						        <Accordion.Control style={{height: "50px"}} icon={<FileDownload size="34px" color="#666"/>} disabled>No downloads available</Accordion.Control>
 						      </Accordion.Item>
-					      </Accordion>
+				      	</Accordion>
 	        			:
 		        		<Accordion chevronPosition="right" defaultValue="customization"  variant="contained" style={{width: "100%"}}>
 						      <Accordion.Item value="downloads">
-						        <Accordion.Control icon={<FileDownload size={20} color="#666"/>}>{selectedContactor.downloads.length} download{(!selectedContactor.downloads.length == 1)?"":"s"} available</Accordion.Control>
+						        <Accordion.Control style={{height: "50px"}} icon={<FileDownload size="34px" color="#666"/>}>{selectedContactor.downloads.length} download{(!selectedContactor.downloads.length == 1)?"":"s"} available</Accordion.Control>
 						        <Accordion.Panel>
 						        	<Group>
 							        	<Table>
 										      <tbody>
 										      	{selectedContactor.downloads.map((download) => (
-															<tr style={{	':hover': {backgroundColor: "#ccc"}}}>
-																<td style={{width: "40px"}}>
-																	<Center style={{ width: "100%", height: "100%" }}>
-																		{(download.format=="pdf")?<FileText size={20} color="#666"/>:<FileX size={20} color="#666"/>}
-																	</Center>
-																</td>
+													<tr>
+														<td style={{width: "40px"}}>
+															<Center style={{ width: "100%", height: "100%" }}>
+																{(download.format=="pdf")?<FileText size="30px" color="#666"/>:<FileX size="30px" color="#666"/>}
+															</Center>
+														</td>
 
 											      		<td>
 											      			<Text style={{float: 'left'}}>{download.name}</Text>
@@ -137,7 +137,7 @@ function ContractorDirectory(){
 
 											      		<td>
 												      		<Link href="#" onClick={() => {signAndDownloadContractorFile(download.s3guid + "." + download.format)}}>
-												      			<Download size={20} color="#666" style={{float: 'right'}}/>
+												      			<Download size="30px" color="#666" style={{float: 'right'}}/>
 											      			</Link>
 											      		</td>
 											      	</tr>
