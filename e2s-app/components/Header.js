@@ -1,14 +1,16 @@
-import { createStyles } from '@mantine/core';
+import {createStyles, Select} from '@mantine/core';
+import { IconSearch } from '@tabler/icons';
 import Link from 'next/Link';
 import {useState} from "react";
 import Modal from '../components/Modal'
 import info from '../public/info.svg'
 import HomeIcon from "../public/home.svg";
+import { useForm } from 'react-hook-form'
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import your icons
-import { faCode, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = createStyles((theme, _params) => ({
     headerParent:{
@@ -59,6 +61,29 @@ const useStyles = createStyles((theme, _params) => ({
 export function Header() {
     const { classes } = useStyles();
     const [showModal, setShowModal] = useState(false);
+    const {register, handleSubmit, formState:{errors}}= useForm();
+    const submitReading = async (event) =>{
+        event.preventDefault()
+
+        const data = JSON.stringify({
+            // type: event.target[0].value,
+            type: event.target[0].value,
+            value: event.target[2].value
+        })
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: data
+        }
+
+        const response = await fetch('/api/readings', options)
+
+        alert("meter reading submitted");
+        event.target.reset();
+    }
 
     return (
         <>
@@ -75,24 +100,31 @@ export function Header() {
                         onClose={() => setShowModal(false)}
                         show={showModal}
                     >
-                        <form action="/send-data-here" method="post">
+                        <form action="/api/readings" method="post" onSubmit={submitReading}>
                             <div className="reading-type">
-                                <div className="label">Select reading type</div> <div className="lines"></div>
-                        Search for the reading type using the search bar<br></br>
-                            {/*<label htmlFor="first">First name</label>*/}
-                            <input type="text" id="type" name="first"/><br></br>
+                                <div className="label">Select reading type</div>
+                                Search for the reading type using the search bar<br></br>
+                                {/*<input type="text" id="type" name="type" {...register('type', {required:true, minLength:3})}/>*/}
+                                <Select
+                                    icon={<IconSearch color="grey" size={30} />}
+                                    data={['Grid Power Usage', 'CHP 01 Generation', 'CHP 02 Generation', 'Gas Usage', 'Solar Output']}
+                                    searchable
+                                    nothingFound="No options"
+                                />
                             </div>
-                            {/*<label htmlFor="last">Last name:</label>*/}
+
                             <div className="reading-type">
                                 <div className="label">Enter reading</div> <div className="lines2"></div>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br></br>
-                            <input type="text" id="last" name="last"/><br></br>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br></br>
+                                <input className="input" type="number" id="fig" name="fig" {...register('reading', {required:true})} /><br></br>
+                                {errors.reading && errors.reading.type === "required" && <p className="btn-danger">PLease enter your reading.</p>}
                             </div>
                             <div className="btn-wrap">
-                            <button href="/" className="modal-btn">Confirm</button><br></br></div>
+                                <button href="/" className="modal-btn">Confirm</button><br></br>
+                            </div>
                             <div className="reading-type" >
                                 <FontAwesomeIcon icon={faInfoCircle} />
-                            This is a prototype. The reading will not show in your account.
+                                This is a prototype. The reading will not show in your account.
                             </div>
                         </form>
 
