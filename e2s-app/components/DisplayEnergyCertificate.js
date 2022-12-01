@@ -1,5 +1,6 @@
 import { Image } from "@mantine/core"
 import { createStyles } from "@mantine/core";
+import DisplayEnergyCertificateImage from '../public/displayEnergyCertificate.svg'
 
 const useStyles = createStyles((theme, _params) => ({
     tmpContainer:{
@@ -20,7 +21,7 @@ function DisplayEnergyCertificate() {
     const { classes } = useStyles();
     return (
         <div className={classes.tmpContainer}>
-            <Image src="displayEnergyCertificate.svg"
+            <Image src={DisplayEnergyCertificateImage.src}
             width={259}
             height={301}
             alt="Display Energy Certificate band B index 42"/>
