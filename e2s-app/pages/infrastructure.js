@@ -28,15 +28,11 @@ export default function Infrastructure({user}) {
 	  /* HTML page content goes between AppShellConsole tags */
 	  <AppShellConsole title={"Infrastructure"} user={user}>
 	  	<TimeRangeSelector setEndTimestamp={setEndTimestamp} setStartTimestamp={setStartTimestamp}/>
-<<<<<<< HEAD
 
 			<TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
 			<ContractorDirectory />
-
-=======
-		  <TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
       <DisplayEnergyCertificate/>
->>>>>>> origin/dev
+
 	  </AppShellConsole>
   );
 }
