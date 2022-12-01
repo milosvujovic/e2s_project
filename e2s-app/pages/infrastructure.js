@@ -4,6 +4,7 @@ import AppShellConsole from "../components/AppShell";
 import TempGraph from "../components/TempGraph";
 import TimeRangeSelector from "../components/TimeRangeSelector";
 import { getUser } from '../hooks/useAuth';
+import DisplayEnergyCertificate from '../components/DisplayEnergyCertificate';
 
 const useStyles = createStyles((theme, _params) => ({
 
@@ -27,6 +28,7 @@ export default function Infrastructure({user}) {
 	  <AppShellConsole title={"Infrastructure"} user={user}>
 	  	<TimeRangeSelector setEndTimestamp={setEndTimestamp} setStartTimestamp={setStartTimestamp}/>
 		  <TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
+      <DisplayEnergyCertificate/>
 	  </AppShellConsole>
   );
 }
