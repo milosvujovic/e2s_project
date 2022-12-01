@@ -20,7 +20,7 @@ function DisplayEnergyCertificate() {
     const { classes } = useStyles();
     return (
         <div className={classes.tmpContainer}>
-            <Image src = "displayEnergyCertificate.svg"
+            <Image src="displayEnergyCertificate.svg"
             width={259}
             height={301}
             alt="Display Energy Certificate band B index 42"/>
