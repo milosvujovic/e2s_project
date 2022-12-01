@@ -1,6 +1,6 @@
 import db from '../../db';
 
-export default async function (req, res) {
+export default async function contractor_data(req, res) {
 	//Temp, this will be dynamically set from the users token.
 	const companyId = "FED4FC15-ECC5-4957-A330-C1928448A2FE"
 

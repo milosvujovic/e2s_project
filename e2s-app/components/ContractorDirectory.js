@@ -93,7 +93,7 @@ function ContractorDirectory(){
 
 	        	<Group>
 		        	<Group style={{width: "100%"}}>
-		        		<img src={"data:image/"+selectedContactor.logoB64} style={{height: "40px"}}/>
+		        		<img alt={`${selectedContactor.name} logo`} src={"data:image/"+selectedContactor.logoB64} style={{height: "40px"}}/>
 	        		</Group>
 
 	        		<Group style={{width: "100%"}}>
@@ -115,8 +115,8 @@ function ContractorDirectory(){
 						        	<Group>
 							        	<Table>
 										      <tbody>
-										      	{selectedContactor.downloads.map((download) => (
-													<tr>
+										      	{selectedContactor.downloads.map((download, i) => (
+													<tr key={i}>
 														<td style={{width: "40px"}}>
 															<Center style={{ width: "100%", height: "100%" }}>
 																{(download.format=="pdf")?<FileText size="30px" color="#666"/>:<FileX size="30px" color="#666"/>}
@@ -176,8 +176,8 @@ function ContractorDirectory(){
 		        </tr>
 		      </thead>
 		      <tbody>
-			      {data.map((contractor) => (
-					    <tr>
+			      {data.map((contractor, i) => (
+					    <tr key={i}>
 					      <td>{contractor.name}</td>
 					      <td>{contractor.role}</td>
 					      <td>{contractor.email}</td>

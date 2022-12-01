@@ -3,7 +3,7 @@ import AWS from 'aws-sdk';
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
 
-export default async function (req, res) {
+export default async function presign_contractor_file(req, res) {
 	const query = req.query;
     const { key } = query;
 

@@ -1,6 +1,6 @@
 import db from "../../db";
 
-export default async function (req, res) {
+export default async function permission_groups(req, res) {
     const query = req.query;
     const { company } = query;
     
