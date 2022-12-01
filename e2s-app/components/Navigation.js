@@ -14,6 +14,9 @@ import {NavigationElement} from "../components/NavigationElement";
 
 const useStyles = createStyles((theme, _params, getRef) => ({
     navigationParent:{
+        position: "fixed",
+        top: 0,
+        left: 0,
         height:"100vh",
         width:"330px",
         backgroundColor:"#363740"

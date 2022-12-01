@@ -34,15 +34,17 @@ export default function Usage({user}) {
 		/* HTML page content goes between AppShellConsole tags */
 		<AppShellConsole title={"Usage"} user={user}>
 			<div style={{width:"100%", display:"flex", flexWrap:"wrap"}}>
-				<div className={classes.tmpContainer}
-				style ={{width:394, height:334}}
-				alt="Area graph showing the monthly energy consumption by energy source for the past year"><EnergybySourceArea/></div>
-				<div className={classes.tmpContainer}
-				style ={{width:394, height:334}}
-				alt="Line graph showing the total monthly cost of energy for the past year"><EnergyCostGraph/></div>
-				<div className={classes.tmpContainer}
-				style ={{width:394, height:454}}
-				alt="Pie chart showing the share of energy usage by energy source for the past month"><EnergyBySourceGraph/></div>
+				<div className={classes.tmpContainer} style ={{width:394, height:334}} alt="Area graph showing the monthly energy consumption by energy source for the past year">
+					<EnergybySourceArea />
+				</div>
+
+				<div className={classes.tmpContainer} style ={{width:394, height:334}} alt="Line graph showing the total monthly cost of energy for the past year">
+					<EnergyCostGraph />
+				</div>
+
+				<div className={classes.tmpContainer} style ={{width:394, height:454}} alt="Pie chart showing the share of energy usage by energy source for the past month">
+					<EnergyBySourceGraph />
+				</div>
 			</div>
 		</AppShellConsole>
 	);

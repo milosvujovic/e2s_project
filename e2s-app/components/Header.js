@@ -4,7 +4,10 @@ import Image from 'next/image';
 
 const useStyles = createStyles((theme, _params) => ({
     headerParent:{
-        width:"100%",
+        position: "fixed",
+        top: "0",
+        left: "330px",
+        width:"calc(100% - 330px)",
         backgroundColor:"white",
         display:"flex",
         justifyContent:"space-between",
@@ -12,7 +15,8 @@ const useStyles = createStyles((theme, _params) => ({
         paddingLeft:"25px",
         paddingRight:"25px",
         paddingTop:"11px",
-        paddingBottom:"11px"
+        paddingBottom:"11px",
+        "z-index": 3
     },
     headerLeft:{
         display:"flex",
@@ -62,7 +66,7 @@ export function Header({user=null}) {
 
                 <div className={classes.headerRight}>
                     <p>Hello, {user==null?"[Username]":user.firstName}. Not you?</p>
-                    <Link className={classes.logoutButton} href="/api/logout">Logout</Link>
+                    <Link prefetch={false} className={classes.logoutButton} href="/api/logout">Logout</Link>
                     <Image alt="Profile Picture" className={classes.profilePicture}/>
                 </div>
 
