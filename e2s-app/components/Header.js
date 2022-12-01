@@ -1,5 +1,5 @@
 import { createStyles } from '@mantine/core';
-import Link from 'next/Link';
+import Link from 'next/link';
 
 const useStyles = createStyles((theme, _params) => ({
     headerParent:{
