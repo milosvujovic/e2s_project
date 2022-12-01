@@ -41,7 +41,7 @@ export default function Usage({user}) {
 				style ={{width:394, height:334}}
 				alt="Line graph showing the total monthly cost of energy for the past year"><EnergyCostGraph/></div>
 				<div className={classes.tmpContainer}
-				style ={{width:406, height:454}}
+				style ={{width:394, height:454}}
 				alt="Pie chart showing the share of energy usage by energy source for the past month"><EnergyBySourceGraph/></div>
 			</div>
 		</AppShellConsole>

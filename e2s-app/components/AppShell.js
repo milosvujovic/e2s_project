@@ -12,7 +12,7 @@ const useStyles = createStyles((theme, _params) => ({
     }
     ,
     childParent:{
-        padding:"30px"
+        padding:"10px"
     }
 }))
 
