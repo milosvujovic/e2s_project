@@ -1,16 +1,10 @@
 import { createStyles, Text, Loader } from '@mantine/core';
 import ReactECharts from 'echarts-for-react';
-import useSWR from 'swr';
 
 const useStyles = createStyles((theme, _params) => ({
-    tmpContainer:{
-        background:"white",
-        width:"400px",
-        paddingTop:"20px"
-    },
     graphContainer:{
-        width:"100%",
-        height:"412px",
+        width:"368px",
+        height:"303px",
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
@@ -26,7 +20,7 @@ function EnergyCostGraph(){
 
         const option = {
             title: {
-                text: 'Energy Cost (£)'
+                text: 'Monthly Energy Cost (£)'
             },
             tooltip: {
                 trigger: 'axis',
@@ -60,7 +54,6 @@ function EnergyCostGraph(){
 
     return (
         <div className={classes.tmpContainer}>
-            <Text align="center" weight="700" size="xl">Energy Cost</Text>
             <div className={classes.graphContainer}>
                 {
                     <ReactECharts option={getOptions()} style={{height:'303px', width:'100%'}}/>
