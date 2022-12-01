@@ -50,7 +50,7 @@ function ContractorDirectory(){
 	}
 
 	async function getSignedContractorFileUrl(s3guid) {
-    const response = await fetch(`http://localhost:3000/api/presign_contractor_file?key=${s3guid}`, {}); 
+    const response = await fetch(`api/presign_contractor_file?key=${s3guid}`, {}); 
     const json = await response.json();
     return json;
 	}
