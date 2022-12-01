@@ -4,7 +4,10 @@ import Image from 'next/image';
 
 const useStyles = createStyles((theme, _params) => ({
     headerParent:{
-        width:"100%",
+        position: "fixed",
+        top: "0",
+        left: "330px",
+        width:"calc(100% - 330px)",
         backgroundColor:"white",
         display:"flex",
         justifyContent:"space-between",
