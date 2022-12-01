@@ -16,7 +16,7 @@ const useStyles = createStyles((theme, _params) => ({
         paddingRight:"25px",
         paddingTop:"11px",
         paddingBottom:"11px",
-        "z-index": 999
+        "z-index": 3
     },
     headerLeft:{
         display:"flex",
