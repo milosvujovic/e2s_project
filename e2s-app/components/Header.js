@@ -56,12 +56,12 @@ export function Header({user=null}) {
                 <div className={classes.headerLeft}>
                     <div className={classes.systemStatusLight}></div>
                     <p className={classes.systemStatusText}><a href="#">Connected</a></p>
-                    <p><a href="#">+ Add manual reading</a></p>
+                    <p><Link href="#">+ Add manual reading</Link></p>
                 </div>
 
                 <div className={classes.headerRight}>
                     <p>Hello, {user==null?"[Username]":user.firstName}. Not you?</p>
-                    <a className={classes.logoutButton} href="/api/logout">Logout</a>
+                    <Link className={classes.logoutButton} href="/api/logout">Logout</Link>
                     <img className={classes.profilePicture}/>
                 </div>
 
