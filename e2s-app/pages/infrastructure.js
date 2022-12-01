@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createStyles } from '@mantine/core';
 import AppShellConsole from "../components/AppShell";
 import TempGraph from "../components/TempGraph";
+import ContractorDirectory from "../components/ContractorDirectory";
 import TimeRangeSelector from "../components/TimeRangeSelector";
 import { getUser } from '../hooks/useAuth';
 import DisplayEnergyCertificate from '../components/DisplayEnergyCertificate';
@@ -27,8 +28,11 @@ export default function Infrastructure({user}) {
 	  /* HTML page content goes between AppShellConsole tags */
 	  <AppShellConsole title={"Infrastructure"} user={user}>
 	  	<TimeRangeSelector setEndTimestamp={setEndTimestamp} setStartTimestamp={setStartTimestamp}/>
-		  <TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
+
+			<TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
+			<ContractorDirectory />
       <DisplayEnergyCertificate/>
+
 	  </AppShellConsole>
   );
 }
