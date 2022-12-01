@@ -1,13 +1,12 @@
 import { createStyles } from '@mantine/core';
 import AppShellConsole from "../components/AppShell";
+import EnergyBySourceGraph from '../components/EnergyBySourceGraph';
 import { getUser } from '../hooks/useAuth';
 
 const useStyles = createStyles((theme, _params) => ({
-	/* Page styling goes here */
-	button:{
-		border:"1px solid blue"
-	}
+
 }))
+
 
 export async function getServerSideProps(context) {
   const user = await getUser(context.req)
@@ -18,11 +17,12 @@ export async function getServerSideProps(context) {
 export default function Usage({user}) {
 	const { classes } = useStyles();
 
-  return (
-	  /* HTML page content goes between AppShellConsole tags */
-	  <AppShellConsole title={"Usage"} user={user}>
 
-	  </AppShellConsole>
-  );
+	return (
+		/* HTML page content goes between AppShellConsole tags */
+		<AppShellConsole title={"Usage"}>
+			<EnergyBySourceGraph/>
+		</AppShellConsole>
+	);
 }
 
