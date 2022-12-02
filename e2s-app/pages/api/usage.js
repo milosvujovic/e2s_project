@@ -5,8 +5,6 @@ export default async function (req, res) {
     // filter API requests by method
     if (req.method === 'GET') {
 
-        let promiseList = []
-
         //This is here for testing, this would be set dynamically
         const businessName = "testcompany"
 

@@ -9,28 +9,29 @@ export default async function (req, res) {
         const businessName = "testcompany"
 
         const query = req.query;
-        const {equipment} = query;
+        const {equipment, IO, energyType} = query;
 
         let params;
 
-        if(equipment == null){
+        if (equipment == null) {
             params = {
                 TableName: "Infrastructure"
-                }
             }
 
             await db.scan(params, function (err, data) {
                 if (err) {
                     console.log('Error', err);
                     res.status(500).end()
+                    return
                 } else {
                     // send the json response from the callback
                     res.status(200).json(data.Items);
+                    return
                 }
             });
 
-        }else{
-            let params = {
+        }else {
+            params = {
                 TableName: "Infrastructure",
                 ExpressionAttributeValues: {
                     ':n': businessName + "." + equipment
@@ -41,13 +42,48 @@ export default async function (req, res) {
                 }
             }
 
+
             await db.query(params, function (err, data) {
                 if (err) {
                     console.log('Error', err);
                     res.status(500).end()
+                    return
                 } else {
                     // send the json response from the callback
-                    res.status(200).json(data.Items);
+
+                    console.log("Reached part 1")
+
+                    if(IO == "input"){
+                        console.log("Reached input")
+                        res.status(200).json(inputs);
+
+                    }else if (IO == "output"){
+                        let outputs = data.Items[0]['outputDataSources']
+                        outputs.forEach(function(dataSource){
+                            if(dataSource['energyType'].toLowerCase() == energyType){
+                                console.log(dataSource['energyType'])
+                                res.status(200).json(dataSource);
+                                return
+                            }
+                        })
+                        res.status(200).json("No data source with energy type " + energyType + " found");
+                        return
+                    }else{
+                        let inputs = data.Items[0]['inputDataSources']
+                        inputs.forEach(function(dataSource){
+                            if(dataSource['energyType'].toLowerCase() == energyType){
+                                console.log(dataSource['energyType'])
+                                res.status(200).json(dataSource);
+                                return
+                            }
+                        })
+                        res.status(200).json("No data source with energy type " + energyType + " found");
+                        return
+                    }
+
+                    return
+
+
                 }
             });
 
@@ -55,6 +91,6 @@ export default async function (req, res) {
 
 
 
-
+    }
 
 }
