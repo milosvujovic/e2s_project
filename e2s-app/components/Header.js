@@ -1,13 +1,9 @@
 import { createStyles } from '@mantine/core';
-import Link from 'next/link';
-import Image from 'next/image';
+import Link from 'next/Link';
 
 const useStyles = createStyles((theme, _params) => ({
     headerParent:{
-        position: "fixed",
-        top: "0",
-        left: "330px",
-        width:"calc(100% - 330px)",
+        width:"100%",
         backgroundColor:"white",
         display:"flex",
         justifyContent:"space-between",
@@ -15,8 +11,7 @@ const useStyles = createStyles((theme, _params) => ({
         paddingLeft:"25px",
         paddingRight:"25px",
         paddingTop:"11px",
-        paddingBottom:"11px",
-        "z-index": 3
+        paddingBottom:"11px"
     },
     headerLeft:{
         display:"flex",
@@ -52,7 +47,7 @@ const useStyles = createStyles((theme, _params) => ({
 
 }))
 
-export function Header({user=null}) {
+export function Header() {
     const { classes } = useStyles();
     return (
         <>
@@ -61,13 +56,13 @@ export function Header({user=null}) {
                 <div className={classes.headerLeft}>
                     <div className={classes.systemStatusLight}></div>
                     <p className={classes.systemStatusText}><a href="#">Connected</a></p>
-                    <p><Link href="#">+ Add manual reading</Link></p>
+                    <p><a href="#">+ Add manual reading</a></p>
                 </div>
 
                 <div className={classes.headerRight}>
-                    <p>Hello, {user==null?"[Username]":user.firstName}. Not you?</p>
-                    <Link prefetch={false} className={classes.logoutButton} href="/api/logout">Logout</Link>
-                    <Image alt="Profile Picture" className={classes.profilePicture}/>
+                    <p><a href="#">Hello, [username]. Not you?</a></p>
+                    <a className={classes.logoutButton} href="#">Logout</a>
+                    <img className={classes.profilePicture}/>
                 </div>
 
             </div>
