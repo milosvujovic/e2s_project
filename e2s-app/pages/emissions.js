@@ -13,7 +13,7 @@ import EmissionsGraph from "../components/EmissionsGraph";
 import { MultiSelect } from '@mantine/core';
 import TimeRangeSelector from "../components/TimeRangeSelector";
 import useSWR from "swr";
-
+import { getUser } from '../hooks/useAuth';
 
 const useStyles = createStyles((theme, _params) => ({
 	emissionsContentParent:{
@@ -33,11 +33,12 @@ const useStyles = createStyles((theme, _params) => ({
 	}
 }))
 
-function dataSourceMapping(databaseResult){
-	return databaseResult
+export async function getServerSideProps(context) {
+  const user = await getUser(context.req)
+  return { props: { user } }
 }
 
-export default function Emissions() {
+export default function Emissions({user}) {
 	const { classes } = useStyles();
 	const { data, error } = useSWR(`/api/infrastructure`)
 	let { allDataSourceOptions } = []
@@ -74,7 +75,7 @@ export default function Emissions() {
 
 	return (
 	  /* HTML page content goes between AppShellConsole tags */
-	  <AppShellConsole title={"Emissions"}>
+	  <AppShellConsole title={"Emissions"} user={user}>
 
 		  <PageTitle title={"Emissions"} icon={LeafIcon}/>
 
@@ -117,5 +118,6 @@ export default function Emissions() {
 		  </div>
 
 	  </AppShellConsole>
+
   );
 }

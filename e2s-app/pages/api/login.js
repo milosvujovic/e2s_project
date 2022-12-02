@@ -1,7 +1,7 @@
 import db from "../../db";
 import jwt from 'jsonwebtoken';
 
-export default async function (req, res) {
+export default async function login(req, res) {
 
     const bcrypt = require("bcrypt");
 

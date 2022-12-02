@@ -12,11 +12,11 @@ const useStyles = createStyles((theme, _params) => ({
     }
     ,
     childParent:{
-        padding:"30px"
+        padding:"10px"
     }
 }))
 
-function AppShellConsole({children, title}) {
+function AppShellConsole({children, title, user=null}) {
     const { classes } = useStyles();
     return (
         <>
@@ -29,13 +29,13 @@ function AppShellConsole({children, title}) {
             <AppShell
                 padding="0"
                 styles={(theme) => ({
-                    main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
+                    main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0], padding: "52px 0 0 330px"},
                 })}
             >
                 <div className={classes.headerNavigationFlex}>
                     {<Navigation/>}
                     <div className={classes.pageLeftSide}>
-                        {<Header/>}
+                        {<Header user={user}/>}
                         <div className={classes.childParent}>
                             {children}
                         </div>
