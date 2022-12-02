@@ -11,13 +11,11 @@ const useStyles = createStyles((theme, _params) => ({
 
 export async function getServerSideProps(context) {
   const user = await getUser(context.req)
-
   return { props: { user } }
 }
 
 export default function Dashboard({user}) {
 	const { classes } = useStyles();
-
   return (
 	  /* HTML page content goes between AppShellConsole tags */
 	  <AppShellConsole title={"Dashboard"} user={user}>

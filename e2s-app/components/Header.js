@@ -1,5 +1,6 @@
 import { createStyles } from '@mantine/core';
 import Link from 'next/Link';
+import Image from 'next/Image'
 
 const useStyles = createStyles((theme, _params) => ({
     headerParent:{
@@ -47,8 +48,9 @@ const useStyles = createStyles((theme, _params) => ({
 
 }))
 
-export function Header() {
-    const { classes } = useStyles();
+export function Header({user=null}) {
+    const { classes } = useStyles()
+    console.log(user)
     return (
         <div className={classes.headerParent}>
 
