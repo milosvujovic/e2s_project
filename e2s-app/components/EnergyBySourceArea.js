@@ -25,9 +25,6 @@ function EnergybySourceArea(){
                     show: true
                 }
             },
-            title: {
-                text: 'Energy Usage by Source (Last Year)'
-            },
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {

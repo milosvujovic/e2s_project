@@ -33,9 +33,6 @@ function EnergyBySourceGraph(){
                 decal: {
                     show: true
                 }
-            }, 
-            title: {
-                text: 'Energy Usage by Source (Last Month)'
             },
             toolbox: {
                 feature: {

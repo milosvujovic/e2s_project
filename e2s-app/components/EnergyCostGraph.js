@@ -19,9 +19,6 @@ function EnergyCostGraph(){
     function getOptions(){
 
         const option = {
-            title: {
-                text: 'Monthly Energy Cost (£)'
-            },
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
