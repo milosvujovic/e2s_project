@@ -25,11 +25,6 @@ const useStyles = createStyles((theme, _params) => ({
 	emissionsBySourceGraphing:{
 		margin:"-40px"
 	},
-	reportSummaryContentParent:{
-		width:"100%",
-		display:"flex",
-		gap:"0 20px"
-	},
 	DateRangePicker:{
 		width:"80px",
 	},
@@ -50,6 +45,12 @@ export default function Emissions() {
 	let [dataSourceValue, setDataSourceValue] = useState([]);
 	let [startTimestamp, setStartTimestamp] = useState();
 	let [endTimestamp, setEndTimestamp] = useState();
+
+	function convertUnixToDate(timestamp){
+		const date = new Date(timestamp * 1000)
+		return (date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + ('0' + date.getMinutes()).slice(-2))
+	}
+
 
 	function getDataSourceOptions(){
 
@@ -81,14 +82,8 @@ export default function Emissions() {
 			  <RoundedContainer>
 				  <ContainerTitle title={"Report Summary"} icon={InfoIcon}/>
 				  <div className={classes.reportSummaryContentParent}>
-					  <div className={classes.reportSummaryHalf}>
-						  <p>Start date: ##/##/####</p>
-						  <p>Total usage: 0kWh</p>
-					  </div>
-					  <div className={classes.reportSummaryHalf}>
-						  <p>End date: ##/##/####</p>
-						  <p>Total price: £0.00</p>
-					  </div>
+					  <p>Start date: {convertUnixToDate(startTimestamp)}</p>
+					  <p>End date: {convertUnixToDate(endTimestamp)}</p>
 				  </div>
 
 			  </RoundedContainer>

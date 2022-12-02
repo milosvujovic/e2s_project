@@ -34,7 +34,7 @@ function EmissionsGraph({startTimestamp=null, endTimestamp=null, allDataSourceOp
 		console.log("INFA BEFORE FETCHES----")
 		console.log(infrastructureData)
 
-		if(Object.keys(selectedDataSourceOptions).length == 0 && allDataSourceOptions != null && false==true){
+		if(Object.keys(selectedDataSourceOptions).length == 0 && allDataSourceOptions != null){
 
 			for(let dataSourceOption of allDataSourceOptions){
 				let energyType = (dataSourceOption.value.toString()).split(".")[0]
@@ -81,7 +81,46 @@ function EmissionsGraph({startTimestamp=null, endTimestamp=null, allDataSourceOp
 		console.log("INFA AFTER FETCHES----")
 		console.log(infrastructureData)
 
-		let graph = {
+		//x Axis Labels
+		let xAxisLabels = []
+
+		if(timeSeriesData.length>0 && infrastructureData.length>0){
+			xAxisLabels = timeSeriesData[0].Items.map((readingsForDataSource) => {
+				let timestamp = readingsForDataSource['timestamp']
+				const date = new Date(timestamp * 1000)
+				return (date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + ('0' + date.getMinutes()).slice(-2))
+			})
+		}
+
+		console.log("Y AXIS VALUES")
+
+		//let allYAxisValues = []
+
+		//y Axis data
+		let allYAxisValues = []
+
+		if(timeSeriesData.length>0 && infrastructureData.length>0) {
+			allYAxisValues = timeSeriesData.map((dataSource, i) => {
+				let kgOfCo2PerUnit = infrastructureData[i]['kgOfCo2PerUnit']
+
+				console.log(dataSource)
+
+				const dataSourceYValues = dataSource.Items.map((reading) => {
+					return (reading['value'] * kgOfCo2PerUnit).toFixed(2)
+				})
+
+				return {
+					name: dataSource.Items[0]['name'],
+					values: dataSourceYValues,
+					scope: infrastructureData[i]['emissionsScope']
+				}
+			})
+		}
+
+		console.log(allYAxisValues.length)
+
+
+		return {
 			tooltip: {
 				trigger: 'axis',
 				axisPointer: {
@@ -99,74 +138,34 @@ function EmissionsGraph({startTimestamp=null, endTimestamp=null, allDataSourceOp
 				{
 					type: 'category',
 					axisLabel: true,
-					data: []
+					name: "Time of reading",
+					data: xAxisLabels
 				}
 			],
 			yAxis: [
 				{
+					name: "Co2 (kg)",
 					type: 'value'
 				}
 			],
-			series: []
-		};
-
-
-
-		if(timeSeriesData.length != 0 && infrastructureData.length != 0){
-
-			//x Axis Labels
-			let xAxisLabels = []
-			let firstDataSource = timeSeriesData[0].Items
-
-			firstDataSource.forEach(function(readingsForDataSource){
-				let timestamp = readingsForDataSource['timestamp']
-				const date = new Date(timestamp * 1000)
-				xAxisLabels.push(date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + ('0' + date.getMinutes()).slice(-2))
-			})
-
-			graph.xAxis[0]['data'] = xAxisLabels
-
-			console.log("Y AXIS VALUES")
-
-			//y Axis Labels
-			timeSeriesData.forEach(function(dataSource){
-				let yAxisValues = []
-				let count = 0
-				let kgOfCo2PerUnit = infrastructureData[count]['kgOfCo2PerUnit']
-
-				dataSource.Items.forEach(function(reading){
-					yAxisValues.push(reading['value']*kgOfCo2PerUnit)
-				})
-
-				console.log(yAxisValues)
-
-				graph.series.push({
-					name: dataSource.Items[0]['name'],
-					type: 'bar',
-					stack: 'scope1',
-					emphasis: {
+			series: allYAxisValues.map((row) => {
+				return ({
+					name: row.name,
+						type: 'bar',
+						stack: row.scope,
+						emphasis: {
 						focus: 'series'
 					},
-					data: yAxisValues
+					data: row.values
 				})
-
-				count += 1
 			})
-
-			console.log(graph)
-
-			return graph
-
-		}else{
-			return {}
-		}
+		};
 
 	}
 
 	return(
 		<>
-			<p>{timeSeriesData.length}</p>
-
+			<ReactECharts option={getGraph()} style={{width:"700px"}} notMerge={true}/>
 		</>
 
 	)
