@@ -50,23 +50,20 @@ const useStyles = createStyles((theme, _params) => ({
 export function Header() {
     const { classes } = useStyles();
     return (
-        <>
-            <div className={classes.headerParent}>
+        <div className={classes.headerParent}>
 
-                <div className={classes.headerLeft}>
-                    <div className={classes.systemStatusLight}></div>
-                    <p className={classes.systemStatusText}><a href="#">Connected</a></p>
-                    <p><a href="#">+ Add manual reading</a></p>
-                </div>
-
-                <div className={classes.headerRight}>
-                    <p><a href="#">Hello, [username]. Not you?</a></p>
-                    <a className={classes.logoutButton} href="#">Logout</a>
-                    <img className={classes.profilePicture}/>
-                </div>
-
+            <div className={classes.headerLeft}>
+                <div className={classes.systemStatusLight}></div>
+                <p className={classes.systemStatusText}><a href="#">Connected</a></p>
+                <p><Link href="#">+ Add manual reading</Link></p>
             </div>
 
-        </>
+            <div className={classes.headerRight}>
+                <p>Hello, {user==null?"[Username]":user.firstName}. Not you?</p>
+                <Link prefetch={false} className={classes.logoutButton} href="/api/logout">Logout</Link>
+                <Image alt="Profile Picture" className={classes.profilePicture} src={`${user.profilePictureB64}`} width={30} height={30}/>
+            </div>
+
+        </div>
     );
 }
