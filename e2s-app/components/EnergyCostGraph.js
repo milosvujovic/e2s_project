@@ -50,12 +50,10 @@ function EnergyCostGraph(){
     }
 
     return (
-        <div className={classes.tmpContainer}>
-            <div className={classes.graphContainer}>
-                {
-                    <ReactECharts option={getOptions()} style={{height:'303px', width:'100%'}}/>
-                }
-            </div>
+        <div className={classes.graphContainer}>
+            {
+                <ReactECharts option={getOptions()} style={{height:'303px', width:'100%'}}/>
+            }
         </div>
     )
 

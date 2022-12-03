@@ -76,16 +76,13 @@ function TempGraph({startTimestamp=null, endTimestamp=null}){
 	}
 
 	return(
-		// This container will change when Will pushes his standard components
-		<div className={classes.tmpContainer}>
-			<Text>Temperature</Text>
-			<div className={classes.graphContainer}>
-				{
-					!data?
-					<Loader />:
-					<ReactECharts option={getOptions()} style={{height: '300px', width:"100%", position:"absolute", left:10}}/>
-				}
-			</div>
+
+		<div className={classes.graphContainer}>
+			{
+				!data?
+				<Loader />:
+				<ReactECharts option={getOptions()} style={{height: '300px', width:"100%", position:"absolute", left:10}}/>
+			}
 		</div>
 	)
 }

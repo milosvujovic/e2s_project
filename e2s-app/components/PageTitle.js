@@ -10,13 +10,13 @@ const useStyles = createStyles((theme, _params) => ({
         marginBottom:"35px"
     },
     pageTitleIcon:{
-        width:"35px",
-        height:"35px",
+        width:"30px",
+        height:"30px",
         filter: "invert(23%) sepia(7%) saturate(22%) hue-rotate(45deg) brightness(102%) contrast(94%)"
     },
     pageTitleText:{
         color:"#404040",
-        fontSize:"30px",
+        fontSize:"27px",
         marginBottom:"4px",
         fontWeight:"normal"
     }
