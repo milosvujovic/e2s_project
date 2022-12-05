@@ -19,7 +19,6 @@ const useStyles = createStyles((theme, _params) => ({
     /* Page styling goes here */
     loginForm:{
         width:"512px",
-        marginLeft:"50px",
         "& .mantine-TextInput-label":{
             fontWeight:"normal"
         },
@@ -29,18 +28,30 @@ const useStyles = createStyles((theme, _params) => ({
     },
     titleBlack:{
         color:"black",
-        fontSize:28
+        fontSize:"28px",
+        marginBottom:"7px",
+        marginTop:"8px"
     },
     textBlack:{
         color:"black",
-        fontSize:17
+        fontSize:"17px",
+        lineHeight:"1.2em",
+        marginBottom:"10px"
     },
     loginError:{
-        color:"red"
+        color:"red",
+        marginBottom:"10px"
     },
     submitBtn:{
         background: "linear-gradient(250deg, rgba(0,62,96,1) 0%, rgba(4,129,196,1) 100%)"
         //024263    0481C4
+    },
+    buttonGroup:{
+        gap:"0px 0px",
+        marginBottom:"10px"
+    },
+    forgotPassword:{
+        marginTop:"15px"
     }
 }))
 
@@ -85,10 +96,10 @@ export default function Login() {
                 <p className={classes.loginError}>{loginError}</p>
                 <TextInput label="Email Address" placeholder="your@email.com" required value={email} onChange={(event) => setEmail(event.currentTarget.value)}/>
                 <PasswordInput label="Password" placeholder="Password" required mt="md" value={password} onChange={(event) => setPassword(event.currentTarget.value)}/>
-                <Group mt="sm">
+                <Group mt="sm" className={classes.buttonGroup}>
                     {/*<Checkbox label="Remember me" sx={{ lineHeight: 1 }} />*/}
                     <Button className={classes.submitBtn} fullWidth mt="sm" onClick={login}>Login</Button>
-                    <Anchor onClick={(event) => event.preventDefault()} href="#" size="17px">
+                    <Anchor onClick={(event) => event.preventDefault()} href="#" size="17px" className={classes.forgotPassword}>
                         Forgot password? Click to reset
                     </Anchor>
                     <Anchor onClick={(event) => event.preventDefault()} href="#" size="17px">
