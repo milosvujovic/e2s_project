@@ -3,6 +3,8 @@ import AppShellConsole from "../components/AppShell";
 import { getUser } from '../hooks/useAuth';
 import {LowCarbonSuggestionContainer} from "../components/LowCarbonSuggestionContainer";
 import useSWR from "swr";
+import HomeIcon from "../public/home.svg";
+import {PageTitle} from "../components/PageTitle";
 
 const useStyles = createStyles((theme, _params) => ({
 	/* Page styling goes here */
@@ -30,7 +32,7 @@ export default function Dashboard({user}) {
   return (
 	  /* HTML page content goes between AppShellConsole tags */
 	  <AppShellConsole title={"Dashboard"} user={user}>
-		  <h1>Hello</h1>
+		  <PageTitle title={"Dashboard"} icon={HomeIcon}/>
 
 
 		  <h3 className={classes.lowCarbonSectionTitle}>Discover new low-carbon technologies</h3>
