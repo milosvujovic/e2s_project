@@ -38,8 +38,8 @@ export default function Dashboard({user}) {
 			  {
 				  !data?
 					  <Loader />:
-					  data.map((item) => (
-						  <LowCarbonSuggestionContainer title={item.name} description={item.description} link={item.link}/>
+					  data.map((item, i) => (
+						  <LowCarbonSuggestionContainer key={i} title={item.name} description={item.description} link={item.link}/>
 					  ))
 			  }
 		  </div>
