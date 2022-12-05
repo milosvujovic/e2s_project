@@ -15,9 +15,10 @@ Prod Deploy:
         - npm i --legacy-peer-deps
         - npm run build
 
-        - ssh deploy 'rm -rf ~/e2s_prod/.next; rm -f ~/e2s_prod/package.json'
+        - ssh deploy 'rm -rf ~/e2s_prod/.next; rm -f ~/e2s_prod/package.json; rm -f ~/e2s_prod/package-lock.json'
         - scp -r ./.next deploy:/home/ubuntu/e2s_prod
         - scp ./package.json deploy:/home/ubuntu/e2s_prod
+        - scp ./package-lock.json deploy:/home/ubuntu/e2s_prod
         - scp ./next.config.js deploy:/home/ubuntu/e2s_dev
         - scp ./next-i18next.config.js deploy:/home/ubuntu/e2s_dev
 
@@ -38,9 +39,10 @@ Dev Deploy:
         - npm i --legacy-peer-deps
         - npm run build
 
-        - ssh deploy 'rm -rf ~/e2s_dev/.next; rm -f ~/e2s_dev/package.json'
+        - ssh deploy 'rm -rf ~/e2s_dev/.next; rm -f ~/e2s_dev/package.json; rm -f ~/e2s_dev/package-lock.json'
         - scp -r ./.next deploy:/home/ubuntu/e2s_dev
         - scp ./package.json deploy:/home/ubuntu/e2s_dev
+        - scp ./package-lock.json deploy:/home/ubuntu/e2s_dev
         - scp ./next.config.js deploy:/home/ubuntu/e2s_dev
         - scp ./next-i18next.config.js deploy:/home/ubuntu/e2s_dev
 
