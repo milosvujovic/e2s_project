@@ -4,6 +4,8 @@ import EnergybySourceArea from '../components/EnergyBySourceArea';
 import EnergyBySourceGraph from '../components/EnergyBySourceGraph';
 import EnergyCostGraph from '../components/EnergyCostGraph';
 import { getUser } from '../hooks/useAuth';
+import {PageTitle} from "../components/PageTitle";
+import BulbIcon from '../public/bulbIcon.svg'
 
 const useStyles = createStyles((theme, _params) => ({
 	tmpContainer:{
@@ -33,6 +35,7 @@ export default function Usage({user}) {
 	return (
 		/* HTML page content goes between AppShellConsole tags */
 		<AppShellConsole title={"Usage"} user={user}>
+			<PageTitle title={"Usage"} icon={BulbIcon}/>
 			<div style={{width:"100%", display:"flex", flexWrap:"wrap"}}>
 				<div className={classes.tmpContainer} style ={{width:394, height:334}} alt="Area graph showing the monthly energy consumption by energy source for the past year">
 					<EnergybySourceArea />
