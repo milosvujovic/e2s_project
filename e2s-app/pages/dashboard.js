@@ -14,7 +14,7 @@ const useStyles = createStyles((theme, _params) => ({
 		justifyContent:"space-between",
 		alignItems:"flex-start"
 	},
-	lowCarbonSectionTitle:{
+	sectionTitle:{
 		textAlign:"center",
 		marginBottom:"26px",
 		fontWeight:"normal"
@@ -34,8 +34,9 @@ export default function Dashboard({user}) {
 	  <AppShellConsole title={"Dashboard"} user={user}>
 		  <PageTitle title={"Dashboard"} icon={HomeIcon}/>
 
+		  
 
-		  <h3 className={classes.lowCarbonSectionTitle}>Discover new low-carbon technologies</h3>
+		  <h3 className={classes.sectionTitle}>Discover new low-carbon technologies</h3>
 		  <div className={classes.lowCarbonTechSuggestionsParent}>
 			  {
 				  !data?
