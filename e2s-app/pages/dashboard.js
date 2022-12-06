@@ -5,6 +5,7 @@ import {LowCarbonSuggestionContainer} from "../components/LowCarbonSuggestionCon
 import useSWR from "swr";
 import HomeIcon from "../public/home.svg";
 import {PageTitle} from "../components/PageTitle";
+import { StatsBox } from '../components/StatsBox'
 
 const useStyles = createStyles((theme, _params) => ({
 	/* Page styling goes here */
@@ -18,6 +19,10 @@ const useStyles = createStyles((theme, _params) => ({
 		textAlign:"center",
 		marginBottom:"26px",
 		fontWeight:"normal"
+	},
+	statsContainer:{
+		display:"flex",
+    flexDirection:"row",
 	}
 }))
 
@@ -34,7 +39,29 @@ export default function Dashboard({user}) {
 	  <AppShellConsole title={"Dashboard"} user={user}>
 		  <PageTitle title={"Dashboard"} icon={HomeIcon}/>
 
-		  
+		  <div className={classes.statsContainer}>
+			  <StatsBox
+	        title="revenue"
+	        value={13456}
+	        prefix="£"
+	        last_month_value={10042}
+	      />
+	      <StatsBox
+	        title="Co2 usage"
+	        value={450}
+	        suffix="Kg"
+	        last_month_value={650}
+	        ml="lg"
+	        mr="lg"
+	        lowerIsBetter={true}
+	      />
+	      <StatsBox
+	        title="Energy Payback"
+	        value={12.50}
+	        prefix="£"
+	        last_month_value={40}
+	      />
+      </div>
 
 		  <h3 className={classes.sectionTitle}>Discover new low-carbon technologies</h3>
 		  <div className={classes.lowCarbonTechSuggestionsParent}>
