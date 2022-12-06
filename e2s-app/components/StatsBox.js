@@ -32,6 +32,7 @@ export function StatsBox({title, value, prefix, last_month_value, mr, ml, suffix
     better = !better
   }
 
+  const islowerIsBetter = () => lowerIsBetter ? !better : better
 
   return (
     <Box className={classes.container} p="md" px="lg" mb="lg" mr={mr} ml={ml}>
@@ -64,7 +65,7 @@ export function StatsBox({title, value, prefix, last_month_value, mr, ml, suffix
         <Text component="span" color={better ? 'teal' : 'red'} weight={700}>
           {diffPerc.toFixed(2)}%
         </Text>{' '}
-        {better ? 'increase' : 'decrease'} compared to last month
+        {islowerIsBetter() ? 'increase' : 'decrease'} compared to last month
       </Text>
     </Box>
   )
