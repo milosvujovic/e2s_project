@@ -29,6 +29,11 @@ export default function Usage({user}) {
 	return (
 		/* HTML page content goes between AppShellConsole tags */
 		<AppShellConsole title={"Usage"} user={user}>
+			<PageTitle title={"Usage"} icon={BulbIcon}/>
+			<div style={{width:"100%", display:"flex", flexWrap:"wrap"}}>
+				<div className={classes.tmpContainer} style ={{width:394, height:334}} alt="Area graph showing the monthly energy consumption by energy source for the past year">
+					<EnergybySourceArea />
+				</div>
 
 			<PageTitle title={"Usage"} icon={bulbIcon}/>
 
