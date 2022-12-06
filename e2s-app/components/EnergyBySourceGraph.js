@@ -33,9 +33,6 @@ function EnergyBySourceGraph(){
                 decal: {
                     show: true
                 }
-            }, 
-            title: {
-                text: 'Energy Usage by Source (Last Month)'
             },
             toolbox: {
                 feature: {
@@ -83,14 +80,12 @@ function EnergyBySourceGraph(){
     }
 
     return (
-        <div className={classes.tmpContainer}>
-            <div className={classes.graphContainer}>
-                {
-                    !data?
-                    <Loader/>:
-                    <ReactECharts option={getOptions()} style={{height:'412px', width:'100%'}}/>
-                }
-            </div>
+        <div className={classes.graphContainer}>
+            {
+                !data?
+                <Loader/>:
+                <ReactECharts option={getOptions()} style={{height:'412px', width:'100%'}}/>
+            }
         </div>
     )
 

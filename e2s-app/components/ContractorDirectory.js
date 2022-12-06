@@ -85,7 +85,7 @@ function ContractorDirectory(){
 	        opened={contractorModalOpened}
 	        onClose={() => setContractorModalOpened(false)}
 	        exitTransitionDuration="125"
-	        size="600px"
+	        size="300px"
 	        withCloseButton={false}
 	      >
 	        {
@@ -158,37 +158,33 @@ function ContractorDirectory(){
 	        }
       </Modal>
 
-			{/* This container will change when Will pushes his standard components */}
-			<div className={classes.tmpContainer}>
-				<Text className={classes.title}><b>Contractor Directory</b></Text>
-				<Text className={classes.subtitle} size="14px">Find contact details, specifications and manuals</Text>	
+			<Text className={classes.subtitle} size="14px">Find contact details, specifications and manuals</Text>
 
-				{
-					!data?
-					<Loader />:
-				<Table>
-		      <thead>
-		        <tr>
-		          <th>Contractor</th>
-		          <th>Role</th>
-		          <th>Email Address</th>
-		          <th></th>
-		        </tr>
-		      </thead>
-		      <tbody>
-			      {data.map((contractor, i) => (
-					    <tr key={i}>
-					      <td>{contractor.name}</td>
-					      <td>{contractor.role}</td>
-					      <td>{contractor.email}</td>
-					      <td><Anchor onClick={() => openContractorModal(contractor)}>More Details</Anchor></td>
-					    </tr>
-					  ))}
-		      </tbody>
-		    </Table>
-		  }
+			{
+				!data?
+				<Loader />:
+			<Table>
+		  <thead>
+			<tr>
+			  <th>Contractor</th>
+			  <th>Role</th>
+			  <th>Email Address</th>
+			  <th></th>
+			</tr>
+		  </thead>
+		  <tbody>
+			  {data.map((contractor, i) => (
+					<tr key={i}>
+					  <td>{contractor.name}</td>
+					  <td>{contractor.role}</td>
+					  <td>{contractor.email}</td>
+					  <td><Anchor onClick={() => openContractorModal(contractor)}>More Details</Anchor></td>
+					</tr>
+				  ))}
+		  </tbody>
+		</Table>
+	  }
 
-			</div>
 
 
     </Group>

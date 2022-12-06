@@ -25,9 +25,6 @@ function EnergybySourceArea(){
                     show: true
                 }
             },
-            title: {
-                text: 'Energy Usage by Source (Last Year)'
-            },
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
@@ -97,12 +94,10 @@ function EnergybySourceArea(){
     }
 
     return (
-        <div className={classes.tmpContainer}>
-            <div className={classes.graphContainer}>
-                {
-                    <ReactECharts option={getOptions()} style={{height:'303px', width:'100%'}}/>
-                }
-            </div>
+        <div className={classes.graphContainer}>
+            {
+                <ReactECharts option={getOptions()} style={{height:'303px', width:'100%'}}/>
+            }
         </div>
     )
 

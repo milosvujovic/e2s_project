@@ -1,24 +1,18 @@
 import { createStyles } from '@mantine/core';
 import AppShellConsole from "../components/AppShell";
-import EnergybySourceArea from '../components/EnergyBySourceArea';
+import EnergyBySourceArea from '../components/EnergyBySourceArea';
 import EnergyBySourceGraph from '../components/EnergyBySourceGraph';
 import EnergyCostGraph from '../components/EnergyCostGraph';
 import { getUser } from '../hooks/useAuth';
+import {RoundedContainer} from "../components/RoundedContainer";
+import {ContainerTitle} from "../components/ContainerTitle";
+import bulbIcon from '../public/bulbIcon.svg'
+import dialIcon from '../public/dial.svg'
+import moneyIcon from '../public/money.svg'
 import {PageTitle} from "../components/PageTitle";
-import BulbIcon from '../public/bulbIcon.svg'
 
 const useStyles = createStyles((theme, _params) => ({
-	tmpContainer:{
-        margin: "10px 10px 0 10px",
-        padding: "20px",
-        borderRadius: "10px",
-        boxShadow: "0px 0px 10px rgb(0 0 0 / 4%)",
-        background:"white",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-		justifyContent:"center"
-    }
+
 }))
 
 
@@ -41,13 +35,25 @@ export default function Usage({user}) {
 					<EnergybySourceArea />
 				</div>
 
-				<div className={classes.tmpContainer} style ={{width:394, height:334}} alt="Line graph showing the total monthly cost of energy for the past year">
-					<EnergyCostGraph />
-				</div>
+			<PageTitle title={"Usage"} icon={bulbIcon}/>
 
-				<div className={classes.tmpContainer} style ={{width:394, height:454}} alt="Pie chart showing the share of energy usage by energy source for the past month">
+			<div style={{width:"100%", display:"flex", flexWrap:"wrap", gap:"22px 22px"}}>
+
+				<RoundedContainer alt="Area graph showing the monthly energy consumption by energy source for the past year">
+					<ContainerTitle title={"Energy Consumption"} icon={bulbIcon}/>
+					<EnergyBySourceArea />
+				</RoundedContainer>
+
+				<RoundedContainer alt="Line graph showing the total monthly cost of energy for the past year">
+					<ContainerTitle title={"Monthly Costing"} icon={moneyIcon}/>
+					<EnergyCostGraph />
+				</RoundedContainer>
+
+				<RoundedContainer alt="Pie chart showing the share of energy usage by energy source for the past month">
+					<ContainerTitle title={"Usage by Source"} icon={dialIcon}/>
 					<EnergyBySourceGraph />
-				</div>
+				</RoundedContainer>
+
 			</div>
 		</AppShellConsole>
 	);
