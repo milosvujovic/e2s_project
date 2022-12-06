@@ -11,7 +11,6 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 const useStyles = createStyles((theme) => ({
   container:{
     backgroundColor:"white",
-    border:"1px solid #e9ecef",
     borderRadius:"5px",
     flex:1
   }

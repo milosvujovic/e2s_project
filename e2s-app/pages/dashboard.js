@@ -6,6 +6,7 @@ import useSWR from "swr";
 import HomeIcon from "../public/home.svg";
 import {PageTitle} from "../components/PageTitle";
 import { StatsBox } from '../components/StatsBox'
+import { KPIDistance } from '../components/KPIDistance'
 
 const useStyles = createStyles((theme, _params) => ({
 	/* Page styling goes here */
@@ -23,6 +24,17 @@ const useStyles = createStyles((theme, _params) => ({
 	statsContainer:{
 		display:"flex",
     flexDirection:"row",
+    flexWrap: "wrap",
+    justifyContent:"space-between",
+    gap:"20px",
+    marginBottom:"40px",
+	},
+	loaderContainer:{
+		display:"flex",
+		alignItems:"center",
+		justifyContent:"center",
+		height:"100%",
+		width:"100%"
 	}
 }))
 
@@ -31,9 +43,38 @@ export async function getServerSideProps(context) {
   return { props: { user } }
 }
 
+function KpiSection(){
+	const { classes } = useStyles();
+	const { data, error } = useSWR(`/api/kpis?company=testcompany`)
+
+	return (
+		<>
+			<h3 className={classes.sectionTitle}>Your KPIs</h3>
+	    <div className={classes.statsContainer}>
+	    	{
+	    		!data?
+	    		<div className={classes.loaderContainer}><Loader /></div>:
+	    		data.map((r) => {
+	      		return (
+	      			<KPIDistance 
+	      				name={r.kpiName}
+	      				target={r.targetValue}
+	      				reachBy={r.reachBy}
+	      				unit={r.unit}
+	      				prefix={r.unitIsPrefix}
+	      			/>
+	      		) 
+	    		})
+	    	}
+	    </div>
+    </>
+	)
+}
+
 export default function Dashboard({user}) {
 	const { classes } = useStyles();
 	const { data, error } = useSWR(`/api/low_carbon_technologies`)
+	
   return (
 	  /* HTML page content goes between AppShellConsole tags */
 	  <AppShellConsole title={"Dashboard"} user={user}>
@@ -51,8 +92,6 @@ export default function Dashboard({user}) {
 	        value={450}
 	        suffix="Kg"
 	        last_month_value={650}
-	        ml="lg"
-	        mr="lg"
 	        lowerIsBetter={true}
 	      />
 	      <StatsBox
@@ -63,14 +102,16 @@ export default function Dashboard({user}) {
 	      />
       </div>
 
+      <KpiSection/>
+
 		  <h3 className={classes.sectionTitle}>Discover new low-carbon technologies</h3>
 		  <div className={classes.lowCarbonTechSuggestionsParent}>
 			  {
 				  !data?
-					  <Loader />:
-					  data.map((item, i) => (
-						  <LowCarbonSuggestionContainer key={i} title={item.name} description={item.description} link={item.link}/>
-					  ))
+				  <div className={classes.loaderContainer}><Loader /></div>:
+				  data.map((item, i) => (
+					  <LowCarbonSuggestionContainer key={i} title={item.name} description={item.description} link={item.link}/>
+				  ))
 			  }
 		  </div>
 	  </AppShellConsole>
