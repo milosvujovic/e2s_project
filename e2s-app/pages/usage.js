@@ -9,7 +9,7 @@ import {ContainerTitle} from "../components/ContainerTitle";
 import dialIcon from '../public/dial.svg'
 import moneyIcon from '../public/money.svg'
 import {PageTitle} from "../components/PageTitle";
-import BulbIcon from '../public/bulbIcon.svg'
+import bulbIcon from '../public/bulbIcon.svg'
 
 
 const useStyles = createStyles((theme, _params) => ({
@@ -35,7 +35,7 @@ export default function Usage({user}) {
 			<div style={{width:"100%", display:"flex", flexWrap:"wrap", gap:"22px 22px"}}>
 
 				<RoundedContainer alt="Area graph showing the monthly energy consumption by energy source for the past year">
-					<ContainerTitle title={"Energy Consumption"} icon={BulbIcon}/>
+					<ContainerTitle title={"Energy Consumption"} icon={bulbIcon}/>
 					<EnergyBySourceArea />
 				</RoundedContainer>
 
