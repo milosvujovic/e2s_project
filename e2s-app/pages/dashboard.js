@@ -50,7 +50,7 @@ export async function getServerSideProps(context) {
   return { props: { user } }
 }
 
-function KpiSection(){
+function KpiSection({setOpened}){
 	const { classes } = useStyles();
 	const { data, error } = useSWR(`/api/kpis?company=testcompany`)
 
@@ -164,7 +164,7 @@ export default function Dashboard({user}) {
 	      />
       </div>
 
-      <KpiSection/>
+      <KpiSection setOpened={setOpened}/>
 
 		  <h3 className={classes.sectionTitle}>Discover new low-carbon technologies</h3>
 		  <div className={classes.lowCarbonTechSuggestionsParent}>
