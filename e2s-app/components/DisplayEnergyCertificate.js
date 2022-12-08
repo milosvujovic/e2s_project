@@ -1,4 +1,4 @@
-import { Image } from "@mantine/core"
+import Image from "next/image"
 import { createStyles } from "@mantine/core";
 import DisplayEnergyCertificateImage from '../public/displayEnergyCertificate.svg'
 
