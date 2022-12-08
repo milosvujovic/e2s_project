@@ -3,6 +3,7 @@ import AppShellConsole from "../components/AppShell";
 import { getUser } from '../hooks/useAuth';
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router'
+import {useTranslation}  from 'next-i18next';
 
 const useStyles = createStyles((theme, _params) => ({
 	settingsContainer:{
@@ -21,22 +22,22 @@ export async function getServerSideProps(context) {
 
 export default function Settings({user}) {
 	const { classes } = useStyles();
-	const [value, setValue] = useState("en");
+	const { i18n } = useTranslation('settings');
+	const [value, setValue] = useState(i18n.language);
 	const router = useRouter()
 	const didMountRef = useRef(false);
 
-	useEffect(()=>{
-		if ( didMountRef.current ) { 
-    	console.log("HERE")
-			onChangeLanguage()
-	  } else {
-		  didMountRef.current = true;
-	  }    
-	}, [value])
+	// useEffect(()=>{
+	// 	if ( didMountRef.current ) { 
+ //    	console.log("HERE")
+	// 		onChangeLanguage()
+	//   } else {
+	// 	  didMountRef.current = true;
+	//   }    
+	// }, [value])
 
-	const onChangeLanguage = () => {
-    // console.log("Here!!")
-    // router.push(router.asPath, undefined, { locale: value })
+	const onChangeLanguage = (e) => {
+    router.push(router.asPath, undefined, { locale: e })
 	}
 
   return (
@@ -58,7 +59,7 @@ export default function Settings({user}) {
 		        { value: 'en', label: 'English' },
 		        { value: 'cy', label: 'Welsh' },
 		      ]}
-		      value={value} onChange={setValue}
+		      value={value} onChange={(e)=>{setValue(e);onChangeLanguage(e)}}
 		    />
 		  </div>
 
