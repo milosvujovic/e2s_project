@@ -23,7 +23,7 @@ export async function getServerSideProps(context) {
 export default function Settings({user}) {
 	const { classes } = useStyles();
 	const { i18n } = useTranslation('settings');
-	const [value, setValue] = useState(i18n.language);
+	const [value, setValue] = useState(null);
 	const router = useRouter()
 	const didMountRef = useRef(false);
 
