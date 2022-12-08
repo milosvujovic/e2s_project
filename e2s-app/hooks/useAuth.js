@@ -24,7 +24,9 @@ export async function getUser(req){
 
     let response = await fetch(`${process.env.HOST}/api/permission_groups?company=${tokenData.company}`)
 
-    let data = await response.json() 
+    let data = await response.json()
+
+    console.log("looking up permissions")
 
     tokenData.permission_groups = data
 
@@ -40,7 +42,11 @@ export async function getUser(req){
         }
     }
 
+    console.log("setting flat permissions")
+
     tokenData.flat_permissions = flat_permissions
+
+    console.log("permissions set")
 
     return tokenData
 

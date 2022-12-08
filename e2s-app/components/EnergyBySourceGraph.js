@@ -3,13 +3,8 @@ import ReactECharts from 'echarts-for-react';
 import useSWR from 'swr';
 
 const useStyles = createStyles((theme, _params) => ({
-    tmpContainer:{
-        background:"white",
-        width:"400px",
-        paddingTop:"20px"
-    },
     graphContainer:{
-        width:"100%",
+        width:"379px",
         height:"412px",
         display:"flex",
         alignItems:"center",
@@ -33,6 +28,17 @@ function EnergyBySourceGraph(){
         })
 
         const option = {
+            aria: {
+                enabled: true,
+                decal: {
+                    show: true
+                }
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
             tooltip: {
                 trigger: 'item'
             },
@@ -74,15 +80,12 @@ function EnergyBySourceGraph(){
     }
 
     return (
-        <div className={classes.tmpContainer}>
-            <Text align="center" weight="700" size="xl">Energy Usage By Source</Text>
-            <div className={classes.graphContainer}>
-                {
-                    !data?
-                    <Loader/>:
-                    <ReactECharts option={getOptions()} style={{height:'412px', width:'100%'}}/>
-                }
-            </div>
+        <div className={classes.graphContainer}>
+            {
+                !data?
+                <Loader/>:
+                <ReactECharts option={getOptions()} style={{height:'412px', width:'100%'}}/>
+            }
         </div>
     )
 
