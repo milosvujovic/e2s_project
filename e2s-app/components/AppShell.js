@@ -29,7 +29,7 @@ function AppShellConsole({children, title, user=null}) {
             <AppShell
                 padding="0"
                 styles={(theme) => ({
-                    main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0], padding: "52px 0 0 330px"},
+                    main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
                 })}
             >
                 <div className={classes.headerNavigationFlex}>
