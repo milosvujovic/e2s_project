@@ -1,5 +1,5 @@
 import { createStyles, Text } from '@mantine/core';
-import Link from 'next/Link';
+import Link from 'next/link';
 import Image from 'next/image'
 import HomeIcon from '../public/home.svg'
 import BulbIcon from '../public/bulbIcon.svg'
