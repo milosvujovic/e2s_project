@@ -1,5 +1,5 @@
 import { createStyles, Text } from '@mantine/core';
-import Link from 'next/Link';
+import Link from 'next/link';
 import Image from 'next/image'
 import HomeIcon from '../public/home.svg'
 import BulbIcon from '../public/bulbIcon.svg'
@@ -17,7 +17,10 @@ const useStyles = createStyles((theme, _params, getRef) => ({
     navigationParent:{
         height:"100vh",
         width:"330px",
-        backgroundColor:"#363740"
+        backgroundColor:"#363740",
+        position: "fixed",
+        top: 0,
+        left: 0
     },
     logoPlaceholder:{
         height: "120px",

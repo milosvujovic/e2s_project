@@ -61,9 +61,10 @@ function KpiSection({setOpened}){
 	    	{
 	    		!data?
 	    		<div className={classes.loaderContainer}><Loader /></div>:
-	    		data.map((r) => {
+	    		data.map((r, i) => {
 	      		return (
 	      			<KPIDistance 
+	      				key={i}
 	      				name={r.kpiName}
 	      				target={r.targetValue}
 	      				reachBy={r.reachBy}
