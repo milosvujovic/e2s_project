@@ -26,6 +26,12 @@ export async function middleware(req) {
         }
     }
 
+    const url = req.nextUrl.clone()   
+    if (url.pathname === '/') {
+        url.pathname = '/dashboard'
+        return NextResponse.redirect(url)   
+    } 
+
     if (req.url.includes("/login") && !req.url.includes("/api")) {
         if (cookie !== undefined) {
             return NextResponse.redirect(`${process.env.HOST}/dashboard`, 303);
