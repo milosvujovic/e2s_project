@@ -85,7 +85,7 @@ function ContractorDirectory(){
 	        opened={contractorModalOpened}
 	        onClose={() => setContractorModalOpened(false)}
 	        exitTransitionDuration="125"
-	        size="300px"
+	        size="600px"
 	        withCloseButton={false}
 	      >
 	        {

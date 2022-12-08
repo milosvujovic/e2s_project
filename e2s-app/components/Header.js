@@ -1,10 +1,10 @@
 import { createStyles } from '@mantine/core';
-import Link from 'next/Link';
-import Image from 'next/Image'
+import Link from 'next/link';
+import Image from 'next/image'
 
 const useStyles = createStyles((theme, _params) => ({
     headerParent:{
-        width:"100%",
+        width:"calc(100% - 330px)",
         backgroundColor:"white",
         display:"flex",
         justifyContent:"space-between",
@@ -12,7 +12,11 @@ const useStyles = createStyles((theme, _params) => ({
         paddingLeft:"25px",
         paddingRight:"25px",
         paddingTop:"11px",
-        paddingBottom:"11px"
+        paddingBottom:"11px",
+        position: "fixed",
+        top: 0,
+        right: 0,
+        zIndex: 3
     },
     headerLeft:{
         display:"flex",
