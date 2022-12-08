@@ -13,11 +13,11 @@ const useStyles = createStyles((theme, _params) => ({
 
 }))
 
-export function RoundedContainer({children}) {
+export function RoundedContainer({children,  style}) {
     const { classes } = useStyles();
     return (
         <>
-            <div className={classes.roundedContainer}>
+            <div className={classes.roundedContainer} style={style}>
                 <div>
                     {children}
                 </div>

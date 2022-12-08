@@ -1,5 +1,5 @@
-import { createStyles } from '@mantine/core';
-import Link from 'next/link';
+import { createStyles, Text } from '@mantine/core';
+import Link from 'next/Link';
 import Image from 'next/image'
 import HomeIcon from '../public/home.svg'
 import BulbIcon from '../public/bulbIcon.svg'
@@ -7,6 +7,7 @@ import LeafIcon from '../public/leafIcon.svg'
 import PylonIcon from '../public/pylonIcon.svg'
 import ReportIcon from '../public/reportIcon.svg'
 import SettingsIcon from '../public/settingsIcon.svg'
+import Logo from '../public/cardiff.png'
 
 import {useRouter} from "next/router";
 import {NavigationElement} from "../components/NavigationElement";
@@ -23,9 +24,13 @@ const useStyles = createStyles((theme, _params, getRef) => ({
     },
     logoPlaceholder:{
         height: "120px",
-        width: "100%"
+        width: "100%",
+        display:"flex",
+        justifyContent:"flex-start",
+        alignItems:"center"
     }
 }))
+
 
 export function Navigation() {
     const { classes } = useStyles();
@@ -36,8 +41,10 @@ export function Navigation() {
             <div  className={classes.navigationParent}>
 
                 <div className={classes.logoPlaceholder}>
-
+                    <Image src={Logo} height={80} width={80} style={{marginLeft:"23px"}}/>
+                    <Text ml="lg" size="xl" color="#A6A6A6" >Abacws</Text>
                 </div>
+
 
                 <NavigationElement tabName={"Dashboard"} url={"/dashboard"} image={HomeIcon}/>
                 <NavigationElement tabName={"Usage"} url={"/usage"} image={BulbIcon}/>

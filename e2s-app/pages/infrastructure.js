@@ -57,7 +57,7 @@ export default function Infrastructure({user}) {
 				  <TimeRangeSelector setEndTimestamp={setEndTimestamp} setStartTimestamp={setStartTimestamp}/>
 			  </RoundedContainer>
 
-			  <RoundedContainer>
+			  <RoundedContainer style={{width:"560px"}}>
 				  <ContainerTitle title={"Outdoor Temperature"} icon={temperatureIcon}/>
 				  <TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
 			  </RoundedContainer>

@@ -6,10 +6,11 @@ import EnergyCostGraph from '../components/EnergyCostGraph';
 import { getUser } from '../hooks/useAuth';
 import {RoundedContainer} from "../components/RoundedContainer";
 import {ContainerTitle} from "../components/ContainerTitle";
-import bulbIcon from '../public/bulbIcon.svg'
 import dialIcon from '../public/dial.svg'
 import moneyIcon from '../public/money.svg'
 import {PageTitle} from "../components/PageTitle";
+import bulbIcon from '../public/bulbIcon.svg'
+
 
 const useStyles = createStyles((theme, _params) => ({
 
@@ -29,7 +30,6 @@ export default function Usage({user}) {
 	return (
 		/* HTML page content goes between AppShellConsole tags */
 		<AppShellConsole title={"Usage"} user={user}>
-
 			<PageTitle title={"Usage"} icon={bulbIcon}/>
 
 			<div style={{width:"100%", display:"flex", flexWrap:"wrap", gap:"22px 22px"}}>
