@@ -1,6 +1,6 @@
 import db from '../../../db';
 
-export default async function (req, res) {
+export default async function test_test(req, res) {
     const id = req.query.id;
     // filter API requests by method
     if (req.method === 'GET') {

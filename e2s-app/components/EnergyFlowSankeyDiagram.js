@@ -5,18 +5,10 @@ import ReactECharts from 'echarts-for-react';
 
 const useStyles = createStyles((theme, _params) => ({
 	tmpContainer:{
-		margin: "10px 10px 0 10px",
-		padding: "10px",
-		borderRadius: "10px",
-		boxShadow: "0px 0px 10px rgb(0 0 0 / 4%)",
-		background:"white",
-		width:"530px",
-		display: "flex",
-		flexDirection: "column",
 	},
 
 	title: {
-		margin: "15px 0 5px 20px"
+		margin: "5px 0 5px 10px"
 	},
 
 	chart: {
@@ -42,7 +34,10 @@ function EnergyFlowSankeyDiagram({nodeNames=null, nodeLinks=null}){
 		    emphasis: {
 		      focus: 'adjacency'
 		    },
-		    data: nodeNames.map((x)=> ({name: x})),
+		    label: {
+		    	show: true
+		    },
+		    data: nodeNames.map((x)=> ({id: x, name: 'joe'+x})),
 		    links: nodeLinks
 		  }
 		};
@@ -52,7 +47,7 @@ function EnergyFlowSankeyDiagram({nodeNames=null, nodeLinks=null}){
 
 	return(
 		// This container will change when Will pushes his standard components
-		<div className={classes.tmpContainer}>
+		<div>
 			<Text className={classes.title}>Estate Energy Flow</Text>
 			<ReactECharts className={classes.chart} option={getOptions()}/>
 		</div>

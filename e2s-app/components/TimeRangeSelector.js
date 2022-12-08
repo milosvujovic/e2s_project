@@ -65,10 +65,10 @@ function TimeRangeSelector({setStartTimestamp, setEndTimestamp}){
 		  	value={timeSelection}
 		  	onChange={setTimeSelection}
 	      data={[
-	      	{ label: 'last 12 hours', value: '12h'},
-	        { label: 'last 24 hours', value: '1d' },
-	        { label: 'last 7 days', value: '7d' },
-	        { label: 'last month', value: '1m' },
+	      	{ label: 'Last 12 hours', value: '12h'},
+	        { label: 'Last 24 hours', value: '1d' },
+	        { label: 'Last 7 days', value: '7d' },
+	        { label: 'Last month', value: '1m' },
 	        { label: 'Custom', value: 'custom'}
 	      ]}
 	    />
