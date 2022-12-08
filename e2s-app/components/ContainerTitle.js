@@ -1,6 +1,6 @@
 import { createStyles } from '@mantine/core';
 import Link from 'next/link';
-import Image from "next/Image";
+import Image from "next/image";
 
 const useStyles = createStyles((theme, _params) => ({
     pageTitleParent:{
