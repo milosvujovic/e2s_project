@@ -6,7 +6,6 @@ import useSWR, { SWRConfig } from 'swr';
 import { appWithTranslation } from 'next-i18next';
 import { NotificationsProvider } from '@mantine/notifications';
 
-
 function App({ Component, pageProps }: AppProps) {
 
     return (
