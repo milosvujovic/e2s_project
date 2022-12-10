@@ -49,7 +49,7 @@ export function Navigation() {
 
                 <NavigationElement tabName={"Dashboard"} url={"/dashboard"} image={HomeIcon}/>
                 <NavigationElement tabName={"Usage"} url={"/usage"} image={BulbIcon}/>
-                <NavigationElement tabName={"CO₂"} url={"/emissions"} image={LeafIcon}/>
+                <NavigationElement tabName={"Emissions"} url={"/emissions"} image={LeafIcon}/>
                 <NavigationElement tabName={"Infrastructure"} url={"/infrastructure"} image={PylonIcon}/>
                 <NavigationElement tabName={"Reporting"} url={"/reporting"} image={ReportIcon}/>
                 <br/>
