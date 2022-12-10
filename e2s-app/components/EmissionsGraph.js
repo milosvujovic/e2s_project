@@ -76,11 +76,6 @@ function EmissionsGraph({startTimestamp=null, endTimestamp=null, allDataSourceOp
 
 	function getGraph(){
 
-		console.log("TIME SERIES AFTER FETCHES----")
-		console.log(timeSeriesData)
-		console.log("INFA AFTER FETCHES----")
-		console.log(infrastructureData)
-
 		//x Axis Labels
 		let xAxisLabels = []
 
@@ -91,10 +86,6 @@ function EmissionsGraph({startTimestamp=null, endTimestamp=null, allDataSourceOp
 				return (date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + ('0' + date.getMinutes()).slice(-2))
 			})
 		}
-
-		console.log("Y AXIS VALUES")
-
-		//let allYAxisValues = []
 
 		//y Axis data
 		let allYAxisValues = []
@@ -116,9 +107,6 @@ function EmissionsGraph({startTimestamp=null, endTimestamp=null, allDataSourceOp
 				}
 			})
 		}
-
-		console.log(allYAxisValues.length)
-
 
 		return {
 			tooltip: {
