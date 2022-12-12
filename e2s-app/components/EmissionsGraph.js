@@ -127,6 +127,21 @@ function EmissionsGraph({startTimestamp=null, endTimestamp=null, allDataSourceOp
 					type: 'shadow'
 				}
 			},
+			toolbox: {
+
+                feature: {
+
+                    saveAsImage: {}
+
+                }
+
+            },
+			aria: {
+                enabled: true,
+                decal: {
+                    show: true
+                }
+            },
 			legend: {},
 			grid: {
 				left: '3%',

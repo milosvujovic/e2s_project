@@ -5,6 +5,10 @@ const getInitialProps = createGetInitialProps();
 
 export default class _Document extends Document {
   static getInitialProps = getInitialProps;
+  //   static async getInitialProps(ctx) {
+  //       const initialProps = await Document.getInitialProps(ctx)
+  //       return { ...initialProps }
+  //   }
 
   render() {
     return (
@@ -15,6 +19,8 @@ export default class _Document extends Document {
         <body>
           <Main />
           <NextScript />
+          {/*Below we add the modal wrapper*/}
+          <div id="modal-root"></div>
         </body>
       </Html>
     );
