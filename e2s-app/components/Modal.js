@@ -52,7 +52,7 @@ const StyledModalHeader = styled.div`
 const StyledModal = styled.div`
   background: white;
   width: 645px;
-  height: 445px;
+  height: 360px;
   border-radius: 8px;
   padding-top: 5px;
   padding-left: 35px;

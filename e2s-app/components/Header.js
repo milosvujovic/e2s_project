@@ -4,14 +4,7 @@ import {createStyles, Select} from '@mantine/core';
 import { IconSearch } from '@tabler/icons';
 import {useState} from "react";
 import Modal from '../components/Modal'
-import info from '../public/info.svg'
-import HomeIcon from "../public/home.svg";
 import { useForm } from 'react-hook-form'
-
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import your icons
-import { faSearch, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = createStyles((theme, _params) => ({
     headerParent:{
@@ -120,16 +113,11 @@ export function Header({user=null}) {
 
                             <div className="reading-type">
                                 <div className="label">Enter reading</div> <div className="lines2"></div>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br></br>
                                 <input className="input" type="number" id="fig" name="fig" {...register('reading', {required:true})} /><br></br>
                                 {errors.reading && errors.reading.type === "required" && <p className="btn-danger">PLease enter your reading.</p>}
                             </div>
                             <div className="btn-wrap">
                                 <button href="/" className="modal-btn">Confirm</button><br></br>
-                            </div>
-                            <div className="reading-type" >
-                                <FontAwesomeIcon icon={faInfoCircle} />
-                                This is a prototype. The reading will not show in your account.
                             </div>
                         </form>
 
