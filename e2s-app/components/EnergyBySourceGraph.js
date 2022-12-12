@@ -63,7 +63,7 @@ function EnergyBySourceGraph(){
                     },
                     emphasis: {
                         label: {
-                            show: true,
+                            show: false,
                             fontSize: '40',
                             fontWeight: 'bold'
                         }
