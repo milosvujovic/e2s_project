@@ -2,7 +2,7 @@ import { createStyles } from '@mantine/core';
 import Link from 'next/link';
 import Image from 'next/image'
 import {useRouter} from "next/router";
-// import {NavLink} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 
 const useStyles = createStyles((theme, _params, getRef) => ({
