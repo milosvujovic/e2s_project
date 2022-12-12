@@ -136,11 +136,6 @@ export function Header({user=null}) {
                     </Modal>
 
                 </div>
-            <div className={classes.headerLeft}>
-                <div className={classes.systemStatusLight}></div>
-                <p className={classes.systemStatusText}><a href="#">Connected</a></p>
-                <p><Link href="#">+ Add manual reading</Link></p>
-            </div>
 
             <div className={classes.headerRight}>
                 <p>Hello, {user==null?"[Username]":user.firstName}. Not you?</p>
