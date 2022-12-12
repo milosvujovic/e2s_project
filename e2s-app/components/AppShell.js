@@ -28,7 +28,7 @@ function AppShellConsole({children, title, user=null}) {
             </Head>
             <AppShell
                 padding="0"
-                style={{padding: "52px 0 0 310px"}}
+                style={{padding: "52px 0 0 330px"}}
                 styles={(theme) => ({
                     main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
                 })}
