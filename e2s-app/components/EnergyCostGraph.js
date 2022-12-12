@@ -3,7 +3,7 @@ import ReactECharts from 'echarts-for-react';
 
 const useStyles = createStyles((theme, _params) => ({
     graphContainer:{
-        width:"368px",
+        width:"100%",
         height:"303px",
         display:"flex",
         alignItems:"center",
