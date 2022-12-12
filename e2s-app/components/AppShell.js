@@ -16,7 +16,7 @@ const useStyles = createStyles((theme, _params) => ({
     }
 }))
 
-function AppShellConsole({children, title}) {
+function AppShellConsole({children, title, user=null}) {
     const { classes } = useStyles();
     return (
         <>
@@ -28,6 +28,7 @@ function AppShellConsole({children, title}) {
             </Head>
             <AppShell
                 padding="0"
+                style={{padding: "52px 0 0 310px"}}
                 styles={(theme) => ({
                     main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
                 })}
@@ -35,7 +36,7 @@ function AppShellConsole({children, title}) {
                 <div className={classes.headerNavigationFlex}>
                     {<Navigation/>}
                     <div className={classes.pageLeftSide}>
-                        {<Header/>}
+                        {<Header user={user}/>}
                         <div className={classes.childParent}>
                             {children}
                         </div>

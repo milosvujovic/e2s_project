@@ -1,5 +1,5 @@
 import { createStyles } from '@mantine/core';
-import Link from 'next/Link';
+import Link from 'next/link';
 import Image from 'next/image'
 import {useRouter} from "next/router";
 // import {NavLink} from 'react-router-dom'
@@ -11,6 +11,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
         width:"100%",
         display:"flex",
         alignItems:"center",
+        cursor:"pointer",
 
         '&:hover': {
             backgroundColor: "rgba(255,255,255,0.07)"
@@ -34,6 +35,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
         display:"flex",
         alignItems:"center",
         backgroundColor: "rgba(255,255,255,0.07)",
+        cursor:"pointer",
 
         [`& .${getRef('navigationIcon')}`]: {
             filter: "invert(100%) sepia(91%) saturate(2%) hue-rotate(292deg) brightness(108%) contrast(101%)"
@@ -96,9 +98,13 @@ export function NavigationElement({tabName, url, image}) {
     const { classes } = useStyles();
     const router = useRouter();
 
+    const redirect = () => {
+        window.location.href = url;
+    };
+
     return (
         <>
-                <div className={router.pathname == url ? classes.navigationElementSelected : classes.navigationElement}>
+                <div className={router.pathname == url ? classes.navigationElementSelected : classes.navigationElement} onClick={redirect}>
                     <div className={classes.navigationSelectedIndicator}/>
                     <div className={classes.navigationContentParent}>
                         <Image src={image} className={classes.navigationIcon}/>
