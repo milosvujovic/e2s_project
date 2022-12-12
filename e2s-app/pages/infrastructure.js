@@ -18,7 +18,21 @@ import leafIcon from "../public/leafIcon.svg";
 import {ContainerFlexParent} from "../components/ContainerFlexParent";
 
 const useStyles = createStyles((theme, _params) => ({
-
+	dateAndTimeAndTemperatureFlexParent:{
+		display:"flex",
+		justifyContent:"center",
+		alignItems:"center",
+		flexWrap:"wrap",
+		width:"535px",
+		rowGap:"10px"
+	},
+	contentFlexParent:{
+		display:"flex",
+		justifyContent:"space-between",
+		alignItems:"flex-start",
+		width:"100%",
+		rowGap:"10px"
+	}
 }))
 
 export async function getServerSideProps(context) {
@@ -52,29 +66,38 @@ export default function Infrastructure({user}) {
 		  <PageTitle title={"Infrastructure"} icon={pylonIcon}/>
 
 		  <ContainerFlexParent>
-			  <RoundedContainer>
-				  <ContainerTitle title={"Change Date and Time"} icon={EditIcon}/>
-				  <TimeRangeSelector setEndTimestamp={setEndTimestamp} setStartTimestamp={setStartTimestamp}/>
-			  </RoundedContainer>
 
-			  <RoundedContainer style={{width:"560px"}}>
-				  <ContainerTitle title={"Outdoor Temperature"} icon={temperatureIcon}/>
-				  <TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
-			  </RoundedContainer>
+			  <div className={classes.contentFlexParent}>
+				  <div className={classes.dateAndTimeAndTemperatureFlexParent}>
+					  <RoundedContainer style={{width:"100%"}}>
+						  <ContainerTitle title={"Change Date and Time"} icon={EditIcon}/>
+						  <TimeRangeSelector setEndTimestamp={setEndTimestamp} setStartTimestamp={setStartTimestamp} style={{textAlign:"center"}}/>
+					  </RoundedContainer>
 
-			  <RoundedContainer>
+					  <RoundedContainer style={{width:"100%"}}>
+						  <ContainerTitle title={"Outdoor Temperature"} icon={temperatureIcon}/>
+						  <TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
+					  </RoundedContainer>
+				  </div>
+
+				  <RoundedContainer style={{width:"40%"}}>
+					  <EnergyFlowSankeyDiagram nodeNames={nodeNames} nodeLinks={nodeLinks}/>
+				  </RoundedContainer>
+
+				  <RoundedContainer>
+					  <ContainerTitle title={"DEC"} icon={leafIcon}/>
+					  <DisplayEnergyCertificate/>
+				  </RoundedContainer>
+			  </div>
+
+			  <RoundedContainer style={{width:"100%"}}>
 				  <ContainerTitle title={"Contractor Directory"} icon={bookIcon}/>
 				  <ContractorDirectory/>
 			  </RoundedContainer>
 
-			  <RoundedContainer>
-				  <ContainerTitle title={"DEC"} icon={leafIcon}/>
-				  <DisplayEnergyCertificate/>
-			  </RoundedContainer>
 
-			  <RoundedContainer>
-			  	<EnergyFlowSankeyDiagram nodeNames={nodeNames} nodeLinks={nodeLinks}/>
-			  </RoundedContainer>
+
+
 		  </ContainerFlexParent>
 
 	  </AppShellConsole>
