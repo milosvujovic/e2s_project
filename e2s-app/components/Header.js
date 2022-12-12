@@ -1,9 +1,7 @@
-import { createStyles } from '@mantine/core';
 import Link from 'next/link';
 import Image from 'next/image'
 import {createStyles, Select} from '@mantine/core';
 import { IconSearch } from '@tabler/icons';
-import Link from 'next/Link';
 import {useState} from "react";
 import Modal from '../components/Modal'
 import info from '../public/info.svg'
@@ -68,7 +66,6 @@ const useStyles = createStyles((theme, _params) => ({
 export function Header({user=null}) {
     const { classes } = useStyles()
     console.log(user)
-    const { classes } = useStyles();
     const [showModal, setShowModal] = useState(false);
     const {register, handleSubmit, formState:{errors}}= useForm();
     const submitReading = async (event) =>{
