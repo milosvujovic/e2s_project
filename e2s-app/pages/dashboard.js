@@ -34,7 +34,7 @@ const useStyles = createStyles((theme, _params) => ({
     flexWrap: "wrap",
     justifyContent:"space-between",
     gap:"20px",
-    marginBottom:"10px",
+    marginBottom:"40px",
 	},
 	loaderContainer:{
 		display:"flex",
@@ -42,9 +42,6 @@ const useStyles = createStyles((theme, _params) => ({
 		justifyContent:"center",
 		height:"100%",
 		width:"100%"
-	},
-	KPISectionParent:{
-		marginBottom:"50px"
 	}
 }))
 
@@ -169,8 +166,6 @@ export default function Dashboard({user}) {
       </div>
 
       <KpiSection setOpened={setOpened}/>
-
-		  <br/>
 
 		  <h3 className={classes.sectionTitle}>Discover new low-carbon technologies</h3>
 		  <div className={classes.lowCarbonTechSuggestionsParent}>

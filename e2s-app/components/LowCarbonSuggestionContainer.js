@@ -11,8 +11,8 @@ const useStyles = createStyles((theme, _params) => ({
         paddingBottom:"15px",
         paddingLeft:"20px",
         paddingRight:"20px",
-        color:"#404040",
-        width:"32%"
+        width: "24%",
+        color:"#404040"
     },
     lowCarbonSuggestionFlex:{
         display:"flex",
