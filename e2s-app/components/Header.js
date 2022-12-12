@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const useStyles = createStyles((theme, _params) => ({
     headerParent:{
-        width:"calc(100% - 330px)",
+        width:"calc(100% - 310px)",
         backgroundColor:"white",
         display:"flex",
         justifyContent:"space-between",

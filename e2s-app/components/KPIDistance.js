@@ -16,7 +16,15 @@ const useStyles = createStyles((theme) => ({
     maxWidth:"700px",
     flexBasis: "calc(20% - 5px)",
     marginBottom: "0!important"
-  }
+  },
+    KPIFlex:{
+      display:"flex",
+      justifyContent:"space-between",
+      alignItems:"center"
+    },
+    KPIPercentage:{
+      marginTop:"-16px"
+    }
 }));
 
 export function KPIDistance({name, target, reachBy, unit, prefix}) {
@@ -41,13 +49,20 @@ export function KPIDistance({name, target, reachBy, unit, prefix}) {
 		  >
 		  	{name}
 		  </Text>
-		  <Text weight={700} size="xl">
-        Target: {prefix?unit:""}{target}{!prefix?unit:""} by {date}
-      </Text>
+
+            <div className={classes.KPIFlex}>
+                <Text size="l">
+                    {prefix?unit:""}{target}{!prefix?unit:""} by {date}
+                </Text>
+                <div className={classes.KPIPercentage}>
+                    <Text color="dimmed" size="sm" mt="md">
+                        {val}%
+                    </Text>
+                </div>
+
+            </div>
+
       <Progress value={val} mt="lg" color="teal"/>
-      <Text color="dimmed" size="sm" mt="md" style={{textAlign:"right"}}>
-				{val}%
-      </Text>
 	  </Box>
 	)
 }
