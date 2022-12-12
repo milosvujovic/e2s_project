@@ -165,7 +165,7 @@ function EmissionsGraph({startTimestamp=null, endTimestamp=null, allDataSourceOp
 
 	return(
 		<>
-			<ReactECharts option={getGraph()} style={{width:"700px"}} notMerge={true}/>
+			<ReactECharts option={getGraph()} style={{width:"100%"}} notMerge={true}/>
 		</>
 
 	)

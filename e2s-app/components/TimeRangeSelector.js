@@ -56,7 +56,7 @@ function TimeRangeSelector({setStartTimestamp, setEndTimestamp}){
 
   useEffect(()=>{
   	setStartTimestamp(Math.floor(dateValue[0] / 1000))
-  	setEndTimestamp(Math.floor(dateValue[1] / 1000)+(60*60*24*1))
+  	setEndTimestamp(Math.floor(dateValue[1] / 1000)+((60*60*24*1)))
   }, [dateValue])
 
   return (
