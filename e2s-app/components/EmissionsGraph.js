@@ -136,6 +136,12 @@ function EmissionsGraph({startTimestamp=null, endTimestamp=null, allDataSourceOp
                 }
 
             },
+			aria: {
+                enabled: true,
+                decal: {
+                    show: true
+                }
+            },
 			legend: {},
 			grid: {
 				left: '3%',
