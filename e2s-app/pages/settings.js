@@ -4,6 +4,8 @@ import { getUser } from '../hooks/useAuth';
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router'
 import {useTranslation}  from 'next-i18next';
+import settingsIcon from "../public/settingsIcon.svg";
+import {PageTitle} from "../components/PageTitle";
 
 
 
@@ -45,6 +47,7 @@ export default function Settings({user}) {
   return (
 	  /* HTML page content goes between AppShellConsole tags */
 	  <AppShellConsole title={"Settings"} user={user}>
+		<PageTitle title={"Settings"} icon={settingsIcon}/>
 	  	<div className={classes.settingsContainer}>
 		  	<div>
 			  	<Text size="lg" weight={500}>

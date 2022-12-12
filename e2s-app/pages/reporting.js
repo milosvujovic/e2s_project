@@ -1,6 +1,8 @@
 import { createStyles } from '@mantine/core';
 import AppShellConsole from "../components/AppShell";
 import { getUser } from '../hooks/useAuth';
+import reportIcon from "../public/reportIcon.svg";
+import {PageTitle} from "../components/PageTitle";
 
 const useStyles = createStyles((theme, _params) => ({
 	/* Page styling goes here */
@@ -35,6 +37,7 @@ export default function Reporting({user}) {
   return (
 	  /* HTML page content goes between AppShellConsole tags */
 	  <AppShellConsole title={"Reporting"} user={user}>
+		<PageTitle title={"Reporting"} icon={reportIcon}/>
 		  <div className={classes.tmpContainer} style ={{width:300}}>
 			  <h3 className={classes.h3}>Tips when visiting a site</h3>
 			  <ul className={classes.ul}>
