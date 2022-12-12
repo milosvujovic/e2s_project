@@ -18,10 +18,10 @@ export default async function (req, res) {
                 "companyName": "testcompany",
                 // "name": {"S": ""},
                 "name": body.type,
-                // "timestamp": {"N": ""},
-                "timestamp": {"N": ""},
-                // "value": {"N": ""}
-                "value": body.value
+                // "value": {"S": ""},
+                "value": body.value,
+                "timestamp":  Math.round(new Date().getTime() / 1000)
+                // "timestamp": ""
             }
         }, function(result) {
             console.log(result);

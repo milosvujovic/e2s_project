@@ -72,7 +72,7 @@ export function Header({user=null}) {
         event.preventDefault()
 
         const data = JSON.stringify({
-            // type: event.target[0].value,
+            // type: event.target[0].value,![](../../../../../AppData/Local/Temp/download.jpg)
             type: event.target[0].value,
             value: event.target[2].value
         })
