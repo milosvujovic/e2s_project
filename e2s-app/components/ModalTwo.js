@@ -71,4 +71,7 @@ const StyledModalOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
+const StyledModalTitle = styled.div`
+`;
+
 export default ModalTwo;
