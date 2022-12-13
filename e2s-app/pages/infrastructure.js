@@ -30,8 +30,9 @@ const useStyles = createStyles((theme, _params) => ({
 		display:"flex",
 		justifyContent:"space-between",
 		alignItems:"flex-start",
-		width:"100%",
-		rowGap:"10px"
+		width:"calc(100vh - 310px)",
+		rowGap:"10px",
+		flexWrap: 'wrap'
 	}
 }))
 
@@ -67,36 +68,31 @@ export default function Infrastructure({user}) {
 
 		  <ContainerFlexParent>
 
-			  <div className={classes.contentFlexParent}>
-				  <div className={classes.dateAndTimeAndTemperatureFlexParent}>
-					  <RoundedContainer style={{width:"100%"}}>
-						  <ContainerTitle title={"Change Date and Time"} icon={EditIcon}/>
-						  <TimeRangeSelector setEndTimestamp={setEndTimestamp} setStartTimestamp={setStartTimestamp} style={{textAlign:"center"}}/>
-					  </RoundedContainer>
+				  <RoundedContainer style={{width:"100%"}}>
+					  <ContainerTitle title={"Change Date and Time"} icon={EditIcon}/>
+					  <TimeRangeSelector setEndTimestamp={setEndTimestamp} setStartTimestamp={setStartTimestamp} style={{textAlign:"center"}}/>
+				  </RoundedContainer>
 
-					  <RoundedContainer style={{width:"100%"}}>
-						  <ContainerTitle title={"Outdoor Temperature"} icon={temperatureIcon}/>
-						  <TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
-					  </RoundedContainer>
-				  </div>
 
-				  <RoundedContainer style={{width:"40%"}}>
+				  <RoundedContainer style={{width:"48%"}}>
+					  <ContainerTitle title={"Outdoor Temperature"} icon={temperatureIcon}/>
+					  <TempGraph startTimestamp={startTimestamp} endTimestamp={endTimestamp}/>
+				  </RoundedContainer>
+
+				  <RoundedContainer style={{width:"48%"}}>
 					  <EnergyFlowSankeyDiagram nodeNames={nodeNames} nodeLinks={nodeLinks}/>
 				  </RoundedContainer>
 
-				  <RoundedContainer>
+				  <RoundedContainer style={{width:"28%"}}>
 					  <ContainerTitle title={"DEC"} icon={leafIcon}/>
 					  <DisplayEnergyCertificate/>
 				  </RoundedContainer>
-			  </div>
 
-			  <RoundedContainer style={{width:"100%"}}>
+
+			  <RoundedContainer style={{width:"68%"}}>
 				  <ContainerTitle title={"Contractor Directory"} icon={bookIcon}/>
 				  <ContractorDirectory/>
 			  </RoundedContainer>
-
-
-
 
 		  </ContainerFlexParent>
 
