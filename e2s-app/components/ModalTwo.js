@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 
-const Modal = ({ show, onClose, children, title }) => {
+const ModalTwo = ({ show, onClose, children, title }) => {
     const [isBrowser, setIsBrowser] = useState(false);
 
     useEffect(() => {
@@ -71,4 +71,4 @@ const StyledModalOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
-export default Modal;
+export default ModalTwo;

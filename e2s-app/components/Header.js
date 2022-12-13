@@ -3,7 +3,7 @@ import Image from 'next/image'
 import {createStyles, Select} from '@mantine/core';
 import { IconSearch } from '@tabler/icons';
 import {useState} from "react";
-import Modal from '../components/Modal'
+import ModalTwo from '../components/ModalTwo'
 import info from '../public/info.svg'
 import HomeIcon from "../public/home.svg";
 import { useForm } from 'react-hook-form'
@@ -101,7 +101,7 @@ export function Header({user=null}) {
                         <a href="#">+ Add manual reading</a>
                     </p>
 
-                    <Modal
+                    <ModalTwo
                         onClose={() => setShowModal(false)}
                         show={showModal}
                     >
@@ -133,7 +133,7 @@ export function Header({user=null}) {
                             </div>
                         </form>
 
-                    </Modal>
+                    </ModalTwo>
 
                 </div>
 
