@@ -5,7 +5,7 @@ import useSWR from 'swr';
 const useStyles = createStyles((theme, _params) => ({
     graphContainer:{
         width:"379px",
-        height:"412px",
+        height:"100%",
         display:"flex",
         alignItems:"center",
         justifyContent:"center",
@@ -63,7 +63,7 @@ function EnergyBySourceGraph(){
                     },
                     emphasis: {
                         label: {
-                            show: true,
+                            show: false,
                             fontSize: '40',
                             fontWeight: 'bold'
                         }
@@ -84,7 +84,7 @@ function EnergyBySourceGraph(){
             {
                 !data?
                 <Loader/>:
-                <ReactECharts option={getOptions()} style={{height:'412px', width:'100%'}}/>
+                <ReactECharts option={getOptions()} style={{height:'320px', width:'100%'}} className={classes.pieChart}/>
             }
         </div>
     )

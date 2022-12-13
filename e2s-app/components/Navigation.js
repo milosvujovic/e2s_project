@@ -17,7 +17,7 @@ import {NavigationElement} from "../components/NavigationElement";
 const useStyles = createStyles((theme, _params, getRef) => ({
     navigationParent:{
         height:"100vh",
-        width:"330px",
+        width:"310px",
         backgroundColor:"#363740",
         position: "fixed",
         top: 0,
@@ -42,8 +42,8 @@ export function Navigation() {
             <div  className={classes.navigationParent}>
 
                 <div className={classes.logoPlaceholder}>
-                    <Image src={Logo} height={80} width={80} style={{marginLeft:"23px"}}/>
-                    <Text ml="lg" size="xl" color="#A6A6A6" >Abacws</Text>
+                    <Image src={Logo} height={70} width={70} style={{marginLeft:"25px"}}/>
+                    <Text ml="lg" size="xl" color="#FFFFFF" >Abacws</Text>
                 </div>
 
 
@@ -51,7 +51,6 @@ export function Navigation() {
                 <NavigationElement tabName={"Usage"} url={"/usage"} image={BulbIcon}/>
                 <NavigationElement tabName={"CO₂"} url={"/emissions"} image={LeafIcon}/>
                 <NavigationElement tabName={"Infrastructure"} url={"/infrastructure"} image={PylonIcon}/>
-                <NavigationElement tabName={"Reporting"} url={"/reporting"} image={ReportIcon}/>
                 <br/>
                 <br/>
                 <br/>

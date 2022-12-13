@@ -13,7 +13,12 @@ import bulbIcon from '../public/bulbIcon.svg'
 
 
 const useStyles = createStyles((theme, _params) => ({
-
+	usageFlex:{
+		display:"flex",
+		justifyContent:"space-between",
+		columnGap:"10px",
+		width:"100%"
+	}
 }))
 
 
@@ -34,20 +39,26 @@ export default function Usage({user}) {
 
 			<div style={{width:"100%", display:"flex", flexWrap:"wrap", gap:"22px 22px"}}>
 
-				<RoundedContainer alt="Area graph showing the monthly energy consumption by energy source for the past year">
-					<ContainerTitle title={"Energy Consumption"} icon={bulbIcon}/>
-					<EnergyBySourceArea />
-				</RoundedContainer>
+				<div className={classes.usageFlex}>
+					<RoundedContainer alt="Area graph showing the monthly energy consumption by energy source for the past year"  style={{flexGrow:"1"}}>
+						<ContainerTitle title={"Energy Consumption"} icon={bulbIcon}/>
+						<EnergyBySourceArea />
+					</RoundedContainer>
 
-				<RoundedContainer alt="Line graph showing the total monthly cost of energy for the past year">
+					<RoundedContainer alt="Pie chart showing the share of energy usage by energy source for the past month">
+						<ContainerTitle title={"Usage by Source"} icon={dialIcon}/>
+						<EnergyBySourceGraph />
+					</RoundedContainer>
+				</div>
+
+				<RoundedContainer alt="Line graph showing the total monthly cost of energy for the past year" style={{width:"100%"}}>
 					<ContainerTitle title={"Monthly Costing"} icon={moneyIcon}/>
-					<EnergyCostGraph />
+					<EnergyCostGraph style={{width:"100%"}}/>
 				</RoundedContainer>
 
-				<RoundedContainer alt="Pie chart showing the share of energy usage by energy source for the past month">
-					<ContainerTitle title={"Usage by Source"} icon={dialIcon}/>
-					<EnergyBySourceGraph />
-				</RoundedContainer>
+
+
+
 
 			</div>
 		</AppShellConsole>

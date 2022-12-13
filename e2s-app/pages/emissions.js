@@ -33,7 +33,7 @@ const useStyles = createStyles((theme, _params) => ({
         width:"80px",
     },
     emissionsDataSourceSelector:{
-        width:"300px"
+        width:"250px"
     },
     colouredContainer:{
         backgroundColor:"#03527d",
@@ -81,12 +81,26 @@ const useStyles = createStyles((theme, _params) => ({
         display:"flex",
         flexDirection:"row"
     },
-		imageFlex:{
-			display:"flex",
-			justifyContent:"flex-end",
-			height:"100%",
-			alignItems:"flex-end"
-		}
+    imageFlex:{
+        display:"flex",
+        justifyContent:"flex-end",
+        height:"100%",
+        alignItems:"flex-end"
+    },
+    emissionsFlexRow1:{
+        display:"flex",
+        justifyContent:"space-between",
+        alignItems:"flex-start",
+        flexGrow:"1",
+        columnGap: "10px",
+        marginBottom:"10px"
+    },
+    emissionsReportSummaryReport:{
+        height:"30px"
+    },
+    emissionsGraphParent:{
+        width:"100%"
+    }
 }))
 
 export async function getServerSideProps(context) {
@@ -135,12 +149,12 @@ export default function Emissions({user}) {
 
           <PageTitle title={"Emissions"} icon={LeafIcon}/>
 
-          <div className={classes.emissionsContentParent}>
-              <RoundedContainer>
+          <div className={classes.emissionsFlexRow1}>
+              <RoundedContainer style={{height:"135px"}}>
                   <ContainerTitle title={"Report Summary"} icon={InfoIcon}/>
                   <div className={classes.reportSummaryContentParent}>
-                      <p>Start date: {convertUnixToDate(startTimestamp)}</p>
-                      <p>End date: {convertUnixToDate(endTimestamp)}</p>
+                      <p style={{marginTop:"-3px"}}>Start date: {convertUnixToDate(startTimestamp)}</p>
+                      <p style={{marginTop:"-3px"}}>End date: {convertUnixToDate(endTimestamp)}</p>
                   </div>
 
               </RoundedContainer>
@@ -149,21 +163,6 @@ export default function Emissions({user}) {
                   <ContainerTitle title={"Change Date and Time"} icon={EditIcon}/>
                   <TimeRangeSelector setEndTimestamp={setEndTimestamp} setStartTimestamp={setStartTimestamp}/>
               </RoundedContainer>
-
-              <div className={classes.colouredContainer}>
-								<div className={classes.flexRow}>
-									<div className={classes.flexColumn}>
-											<div className={classes.pageTitleParent}>
-													<Image src={Bubble} className={classes.pageTitleIcon}/>
-													<h1 className={classes.pageTitleText}>{"Did you know?"}</h1>
-											</div>
-											<p className={classes.pageText}>{"The word 'energy' is derived from ancient Greece"}</p>
-									</div>
-									<div className={classes.imageFlex}>
-                		<Image className={classes.imageSize} src={GreekPerson}/>
-									</div>
-								</div>
-              </div>
 
               <RoundedContainer>
                   <ContainerTitle title={"Filtering"} icon={FilterIcon}/>
@@ -180,13 +179,17 @@ export default function Emissions({user}) {
                   }
 
               </RoundedContainer>
+          </div>
 
-              <RoundedContainer>
+          <div>
+              <RoundedContainer className={classes.emissionsGraphParent}>
                   <ContainerTitle title={"Emissions by Source"} icon={GraphIcon}/>
                   <EmissionsGraph className={classes.emissionsBySourceGraphing} startTimestamp={startTimestamp} endTimestamp={endTimestamp} allDataSourceOptions ={allDataSourceOptions} selectedDataSourceOptions={dataSourceValue}/>
               </RoundedContainer>
-
           </div>
+
+
+
 
       </AppShellConsole>
 

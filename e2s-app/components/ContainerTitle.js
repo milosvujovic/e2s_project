@@ -16,7 +16,7 @@ const useStyles = createStyles((theme, _params) => ({
     },
     pageTitleText:{
         color:"#404040",
-        fontSize:"20px",
+        fontSize:"18px",
         fontWeight:"normal",
         marginBottom:"4px",
         marginRight:"50px"

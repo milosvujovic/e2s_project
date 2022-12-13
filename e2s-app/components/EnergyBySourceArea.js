@@ -3,7 +3,7 @@ import ReactECharts from 'echarts-for-react';
 
 const useStyles = createStyles((theme, _params) => ({
     graphContainer:{
-        width:"368px",
+        width:"100%",
         height:"303px",
         display:"flex",
         alignItems:"center",
@@ -96,7 +96,7 @@ function EnergybySourceArea(){
     return (
         <div className={classes.graphContainer}>
             {
-                <ReactECharts option={getOptions()} style={{height:'303px', width:'100%'}}/>
+                <ReactECharts option={getOptions()} style={{width:'100%'}}/>
             }
         </div>
     )
