@@ -64,3 +64,4 @@ You can learn more about how we do this [here](https://git.cardiff.ac.uk/c200892
 ### Architecture Diagram
 
 A C4 Model diagram of the application can be found [here](https://git.cardiff.ac.uk/c2008927/e2s_project_team_1/-/wikis/uploads/a8ccec10dcd325ba405b12db7e3e0ee4/E2S_C4_Model.pdf.pdf).
+
